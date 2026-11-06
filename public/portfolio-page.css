@@ -1,0 +1,28 @@
+.case-hero{padding:clamp(52px,8vw,88px) 0;background:var(--yellow);border-bottom:3px solid var(--line)}
+.case-kicker{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font:800 .75rem var(--display);letter-spacing:.04em;text-transform:uppercase}
+.case-kicker span{padding:7px 10px;border:2px solid var(--line);background:#fff}
+.case-hero h1{max-width:980px;margin-top:22px;font-size:clamp(2.4rem,7vw,5.8rem)}
+.case-hero .case-intro{max-width:760px;margin-top:24px;font-size:clamp(1.05rem,2vw,1.25rem);font-weight:700}
+.case-hero .case-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.case-meta{display:grid;grid-template-columns:repeat(3,1fr);margin-top:42px;border:3px solid var(--line);background:#fff}
+.case-meta div{padding:16px 20px;border-right:3px solid var(--line)}
+.case-meta div:last-child{border-right:0}
+.case-meta small{display:block;color:#55556a;font:800 .7rem var(--display);letter-spacing:.05em;text-transform:uppercase}
+.case-meta strong{display:block;margin-top:6px;font-size:.95rem}
+.case-body{padding:72px 0}
+.case-body.alt{background:var(--panel);border-block:3px solid var(--line)}
+.case-body h2{max-width:850px;font-size:clamp(1.9rem,4.4vw,3.25rem)}
+.case-body .case-lead{max-width:780px;margin-top:18px;color:#55556a;font-size:1.04rem}
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+.case-tile{padding:24px;border:3px solid var(--line);background:#fff;box-shadow:6px 6px 0 var(--line)}
+.case-tile b{font:800 .78rem var(--display);color:var(--blue)}
+.case-tile h3{margin-top:16px;font-size:1.1rem}
+.case-tile p{margin-top:10px;color:#55556a;font-size:.92rem}
+.case-columns{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start;margin-top:30px}
+.case-list{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.case-list li{padding:15px 18px;border-left:7px solid var(--yellow);background:#fff;font-weight:700}
+.case-note{margin-top:24px;padding:18px 20px;border:2px solid var(--line);background:#fff;color:#55556a;font-size:.9rem}
+.case-next{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.case-next a{padding:10px 14px;border:2px solid var(--line);background:#fff;font-weight:800;text-decoration:none}
+.case-next a:hover{background:var(--yellow)}
+@media(max-width:760px){.case-meta{grid-template-columns:1fr}.case-meta div{border-right:0;border-bottom:3px solid var(--line)}.case-meta div:last-child{border-bottom:0}.case-grid{grid-template-columns:1fr}.case-columns{grid-template-columns:1fr;gap:22px}}
