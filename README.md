@@ -11,7 +11,7 @@ public/          Static site (served at /)
   service-page.css
   portfolio-page.css
   services/       Six dedicated service pages
-  projects/       Four portfolio case studies
+  projects/       Five portfolio case studies
   ayli.jpg        Saved AYLI website visual
   sriram-broadband.jpg
 api/enquiry.js    Serverless function for the contact form (POST /api/enquiry)
