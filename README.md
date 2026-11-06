@@ -8,6 +8,8 @@ enquiry form through Gmail SMTP.
 ```
 public/          Static site (served at /)
   index.html
+  service-page.css
+  services/       Six dedicated service pages
   ayli.jpg
   sriram-broadband.jpg
 api/enquiry.js   Serverless function for the contact form (POST /api/enquiry)
