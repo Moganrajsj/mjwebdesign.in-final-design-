@@ -422,6 +422,7 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
           <textarea name="message" rows="4" placeholder="What are you building, and by when?" required></textarea>
         </label>
         <button class="btn" type="submit">Send enquiry</button>
+        <input name="company" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <p class="formnote" id="form-note" role="status" aria-live="polite">We’ll only use these details to reply to your enquiry.</p>
       </form>
     </div>
@@ -463,39 +464,69 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
 (function () {
   var form = document.getElementById('enquiry-form');
   if (!form) return;
+  var note = document.getElementById('form-note');
+  var button = form.querySelector('button[type="submit"]');
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var data = new FormData(form);
-    var name = String(data.get('name') || '').trim();
-    var phone = String(data.get('phone') || '').trim();
-    var email = String(data.get('email') || '').trim();
-    var service = String(data.get('service') || '').trim();
-    var message = String(data.get('message') || '').trim();
+    var payload = {
+      name: String(data.get('name') || '').trim(),
+      phone: String(data.get('phone') || '').trim(),
+      email: String(data.get('email') || '').trim(),
+      service: String(data.get('service') || '').trim(),
+      message: String(data.get('message') || '').trim(),
+      company: String(data.get('company') || '').trim() // honeypot
+    };
 
-    var body = 'New project enquiry\n\n'
-      + 'Name: ' + name + '\n'
-      + 'Phone: ' + phone + '\n'
-      + 'Email: ' + (email || 'not provided') + '\n'
-      + 'Service: ' + service + '\n\n'
-      + message;
+    button.disabled = true;
+    note.textContent = 'Sending your enquiry…';
 
-    // No backend on this static site: hand the enquiry to WhatsApp,
-    // with email as a fallback. To use a real backend later, replace
-    // this block with a fetch() POST to your form endpoint.
-    window.open('https://wa.me/919843176704?text=' + encodeURIComponent(body), '_blank', 'noopener');
-
-    var note = document.getElementById('form-note');
-    note.textContent = 'Thanks! WhatsApp should now be open with your message ready to send. If it didn’t open, ';
-    var mail = document.createElement('a');
-    mail.href = 'mailto:mjwebdesigns.in@gmail.com'
-      + '?subject=' + encodeURIComponent('Project enquiry from ' + (name || 'website'))
-      + '&body=' + encodeURIComponent(body);
-    mail.textContent = 'send it by email';
-    note.appendChild(mail);
-    note.appendChild(document.createTextNode(' instead.'));
-
-    form.reset();
+    fetch('/api/enquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (json) {
+          return { ok: res.ok && json.ok, error: json.error };
+        });
+      })
+      .then(function (result) {
+        if (!result.ok) throw new Error(result.error || 'Could not send');
+        note.textContent = 'Thanks'
+          + (payload.name ? ' ' + payload.name.split(' ')[0] : '')
+          + '! Your enquiry has been sent — we’ll reply within one working day.';
+        form.reset();
+      })
+      .catch(function () {
+        // No backend (e.g. static hosting) or the mail server failed:
+        // give the visitor a one-click way to send it themselves.
+        var body = 'New project enquiry\n\n'
+          + 'Name: ' + payload.name + '\n'
+          + 'Phone: ' + payload.phone + '\n'
+          + 'Email: ' + (payload.email || 'not provided') + '\n'
+          + 'Service: ' + payload.service + '\n\n'
+          + payload.message;
+        note.textContent = 'We couldn’t send that automatically. ';
+        var wa = document.createElement('a');
+        wa.href = 'https://wa.me/919843176704?text=' + encodeURIComponent(body);
+        wa.target = '_blank';
+        wa.rel = 'noopener noreferrer';
+        wa.textContent = 'Send it on WhatsApp';
+        var mail = document.createElement('a');
+        mail.href = 'mailto:mjwebdesigns.in@gmail.com'
+          + '?subject=' + encodeURIComponent('Project enquiry from ' + (payload.name || 'website'))
+          + '&body=' + encodeURIComponent(body);
+        mail.textContent = 'email it';
+        note.appendChild(wa);
+        note.appendChild(document.createTextNode(' or '));
+        note.appendChild(mail);
+        note.appendChild(document.createTextNode(' instead.'));
+      })
+      .then(function () {
+        button.disabled = false;
+      });
   });
 })();
 </script>
