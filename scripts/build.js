@@ -33,6 +33,7 @@ const requiredProjectPages = [
   "ayli-womens-fashion",
   "spidy-clothing",
   "ugan-foods",
+  "tm-international-tradeline",
 ];
 
 for (const slug of requiredProjectPages) {
