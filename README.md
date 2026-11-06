@@ -1,7 +1,7 @@
 # MJ web designs — website
 
-Static one-page site plus a serverless endpoint that emails the project
-enquiry form through Gmail SMTP.
+Static website with dedicated service pages, portfolio case studies and a
+serverless project-enquiry endpoint that sends email through Gmail SMTP.
 
 ## Layout
 
@@ -9,12 +9,14 @@ enquiry form through Gmail SMTP.
 public/          Static site (served at /)
   index.html
   service-page.css
+  portfolio-page.css
   services/       Six dedicated service pages
-  ayli.jpg
+  projects/       Four portfolio case studies
+  ayli.jpg        Saved AYLI website visual
   sriram-broadband.jpg
-api/enquiry.js   Serverless function for the contact form (POST /api/enquiry)
-lib/enquiry.js   Shared validation + email builder (nodemailer)
-scripts/         Local dev server + static build check
+api/enquiry.js    Serverless function for the contact form (POST /api/enquiry)
+lib/enquiry.js    Shared validation + email builder (nodemailer)
+scripts/          Local dev server + static build checks
 ```
 
 ## Run locally
