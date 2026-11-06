@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MJ web designs – More than just design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --panel:#F1F2FF; --ink:#000000; --muted:#4A4A66; --line:#000000;
+  --yel:#FFD60A; --blue:#1F3BFF; --on-blue:#FFFFFF;
+  --d:'Unbounded','Arial Black',system-ui,sans-serif; --b:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000000;--panel:#12123A;--ink:#FFFFFF;--muted:#B5B5D6;--line:#FFFFFF;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#000000;--panel:#12123A;--ink:#FFFFFF;--muted:#B5B5D6;--line:#FFFFFF;color-scheme:dark}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 1.0625rem/1.6 var(--b)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--yel)}
+h1,h2,h3{font-family:var(--d);margin:0;line-height:1.05;letter-spacing:-.03em}
+p{margin:0} a{color:inherit}
+:focus-visible{outline:4px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+section{padding:96px 0}
+h2{font-size:clamp(1.9rem,4.6vw,3.4rem);font-weight:800}
+.btn{display:inline-block;padding:16px 28px;font:700 1rem var(--b);text-decoration:none;border:3px solid #000;background:#fff;color:#000;box-shadow:5px 5px 0 #000;transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 #000}
+.btn.blue{background:var(--blue);color:#fff}
+
+/* navigation + hero on yellow */
+.top{background:var(--yel);color:#000;position:relative}
+.top nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:21;background:var(--yel);border-bottom:3px solid #000}
+.top nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.logo{font:800 1.15rem var(--d);text-decoration:none;letter-spacing:-.04em}
+.links{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-weight:700}
+.links a{text-decoration:none}.links a:hover{text-decoration:underline;text-decoration-thickness:3px}
+.hero{padding:84px 0 72px}
+.hero h1{font-size:clamp(2.8rem,10.5vw,8.6rem);font-weight:800;letter-spacing:-.06em;line-height:.9}
+.hero h1 em{font-style:normal;background:#000;color:var(--yel);padding:0 .12em;display:inline-block;transform:rotate(-2deg)}
+.hero .sub{margin-top:30px;font-size:1.3rem;font-weight:700;max-width:32ch}
+.cta{display:flex;gap:18px;flex-wrap:wrap;margin-top:36px}
+.tick{border-top:3px solid #000;background:#000;color:var(--yel);overflow:hidden;white-space:nowrap}
+.tick div{display:inline-block;padding:14px 0;font:800 1.1rem var(--d);animation:slide 26s linear infinite}
+.tick span{margin:0 26px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* services: tiles */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);margin-top:48px;border:3px solid var(--line)}
+.tile{padding:30px 26px 34px;border-right:3px solid var(--line);border-bottom:3px solid var(--line);min-height:210px;transition:background .15s,color .15s}
+.tile:nth-child(3n){border-right:0}.tile:nth-child(n+4){border-bottom:0}
+.tile:hover{background:var(--blue);color:#fff}
+.tile:hover p{color:#fff}
+.tile h3{font-size:1.35rem;margin-bottom:12px}
+.tile p{color:var(--muted)}
+
+/* projects */
+.work{background:var(--blue);color:#fff}
+.work .btn{box-shadow:5px 5px 0 #000}
+.proj{display:grid;grid-template-columns:1.5fr 1fr;gap:0;margin-top:40px;border:3px solid #000;background:#fff;color:#000}
+.proj:nth-of-type(even){grid-template-columns:1fr 1.5fr}
+.proj:nth-of-type(even) .shot{order:2;border-left:3px solid #000;border-right:0}
+.shot{aspect-ratio:16/10;border-right:3px solid #000;position:relative;overflow:hidden;background:var(--yel)}
+.shot::before{content:"";position:absolute;inset:14% 12% 0;background:#fff;border:3px solid #000;border-bottom:0}
+.shot::after{content:"";position:absolute;left:20%;top:28%;width:30%;height:16px;background:var(--blue);box-shadow:0 34px 0 -3px #ccc,0 62px 0 -3px #ccc}
+.proj:nth-of-type(even) .shot{background:#FF6B35}
+.info{padding:30px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.info h3{font-size:1.7rem}.info p{color:#444}
+.tag{font-weight:800;color:var(--blue)}
+.note{margin-top:24px;opacity:.85;font-size:.95rem}
+
+/* industries */
+.ind{display:flex;flex-wrap:wrap;gap:14px;margin:40px 0 0;padding:0;list-style:none}
+.ind li{padding:14px 24px;border:3px solid var(--line);font-weight:800;font-size:1.05rem}
+.ind li:nth-child(3n+1){background:var(--yel);color:#000;border-color:#000}
+
+/* why */
+.whyg{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:48px}
+.why{padding:28px;background:var(--panel);border-left:10px solid var(--blue)}
+.why h3{font-size:1.25rem;margin-bottom:10px}.why p{color:var(--muted)}
+
+/* process: horizontal sequence */
+.process{background:var(--yel);color:#000}
+.steps{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);counter-reset:s;border:3px solid #000;background:#fff}
+.steps li{counter-increment:s;padding:26px 22px 30px;border-right:3px solid #000;position:relative}
+.steps li:last-child{border-right:0}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;background:#000;color:var(--yel);font:800 1.2rem var(--d);margin-bottom:18px}
+.steps h3{font-size:1.25rem;margin-bottom:8px}.steps p{color:#333}
+
+/* testimonials: stacked offset cards */
+.qs{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:52px}
+blockquote{margin:0;padding:28px;border:3px solid var(--line);background:var(--bg);box-shadow:8px 8px 0 var(--blue)}
+blockquote:nth-child(2){transform:translateY(24px)}
+blockquote p{font:700 1.2rem/1.4 var(--b)}
+blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
+
+/* footer */
+.ft{background:var(--yel);color:#000;border-top:3px solid #000;padding:0}
+.ft .cta{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center;padding:72px 0 64px;margin:0}
+.ft .cta h2{font:800 clamp(2.6rem,8vw,6.2rem)/.92 var(--d);letter-spacing:-.06em;margin:0}
+.ft .cta h2 em{font-style:normal;background:#000;color:var(--yel);padding:0 .12em;display:inline-block;transform:rotate(-2deg);margin-top:.08em}
+.ft .cta p{margin:22px 0 0;font-weight:700;font-size:1.2rem;max-width:30ch}
+.ft .btn{display:inline-block;margin-top:30px;padding:16px 30px;font:700 1rem var(--b);text-decoration:none;background:var(--blue);color:#fff;border:3px solid #000;box-shadow:5px 5px 0 #000}
+.ft .btn:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 #000}
+.ft .box{background:#fff;border:3px solid #000;box-shadow:8px 8px 0 var(--blue);padding:26px 28px;display:grid;gap:18px;color:#000}
+.ft .direct{display:grid;gap:16px;margin-top:30px;justify-items:start}
+.ft .direct a{display:inline-flex;align-items:center;gap:12px;font:700 1.05rem var(--b);text-decoration:none;border-bottom:3px solid transparent;padding-bottom:2px;word-break:break-word}
+.ft .direct a:hover{border-bottom-color:#000}
+.ft .direct svg{width:24px;height:24px;flex:none}
+.ft .enq-title{font:800 1.15rem var(--d);letter-spacing:-.03em;margin:0;padding-bottom:14px;border-bottom:3px solid #000}
+.ft .enquire label{display:grid;gap:7px;font:800 .7rem var(--d);letter-spacing:.05em;text-transform:uppercase}
+.ft .enquire .opt{font:700 .66rem var(--b);letter-spacing:0;text-transform:none;color:#4A4A66}
+.ft .enquire .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ft .enquire input,.ft .enquire select,.ft .enquire textarea{width:100%;padding:13px 15px;border:3px solid #000;background:#fff;color:#000;font:700 1rem/1.4 var(--b);border-radius:0;box-shadow:none}
+.ft .enquire textarea{min-height:108px;resize:vertical}
+.ft .enquire select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='10'><path d='M1 1l6 7 6-7' stroke='%23000' stroke-width='3' fill='none'/></svg>");background-repeat:no-repeat;background-position:right 15px center;padding-right:46px;cursor:pointer}
+.ft .enquire input:focus,.ft .enquire select:focus,.ft .enquire textarea:focus{outline:3px solid var(--blue);outline-offset:2px}
+.ft .enquire ::placeholder{color:#7a7a8c;opacity:1}
+.ft .enquire .btn{width:100%;margin-top:2px;cursor:pointer;text-align:center;font-family:var(--b);font-size:1rem;border-radius:0}
+.ft .enquire .formnote{font:700 .9rem/1.45 var(--b);margin:0;min-height:1.45em;max-width:none;color:#000}
+.ft .enquire .formnote a{display:inline;font:inherit;text-decoration:underline;text-underline-offset:2px;word-break:break-word}
+.ft .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding:48px 0;border-top:3px solid #000}
+.ft .cols h3{font:800 1rem var(--d);letter-spacing:-.03em;margin:0 0 16px}
+.ft .cols ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-weight:700;color:inherit}
+.ft .cols a{text-decoration:none}
+.ft .cols a:hover{text-decoration:underline;text-decoration-thickness:3px}
+.ft .brand{font:800 1.5rem var(--d);letter-spacing:-.05em}
+.ft .blurb{margin:12px 0 0;max-width:30ch;font-weight:500}
+.ft .tick{background:#000;color:var(--yel);overflow:hidden;white-space:nowrap;border-top:3px solid #000}
+.ft .tick div{display:inline-block;padding:15px 0;font:800 1.05rem var(--d);letter-spacing:-.02em;animation:slide 30s linear infinite}
+.ft .tick span{margin:0 24px}
+.ft .tick i{font-style:normal;color:#fff}
+.ft .base{background:#000;color:#fff;border-top:1px solid #333}
+.ft .base .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;padding-top:18px;padding-bottom:20px;font-size:.95rem}
+.ft .base a{text-decoration:none;color:var(--yel);font-weight:700}
+.ft .base a:hover{text-decoration:underline}
+
+@media (max-width:900px){
+  .links{display:none}
+  section{padding:72px 0}
+  .tiles,.whyg,.qs{grid-template-columns:1fr}
+  .tile,.tile:nth-child(3n){border-right:0;border-bottom:3px solid var(--line)!important}
+  .tile:last-child{border-bottom:0!important}
+  .proj,.proj:nth-of-type(even){grid-template-columns:1fr}
+  .proj:nth-of-type(even) .shot{order:0;border-left:0}
+  .shot{border-right:0;border-bottom:3px solid #000}
+  .steps{grid-template-columns:1fr 1fr}
+  .steps li:nth-child(2){border-right:0}.steps li:nth-child(-n+2){border-bottom:3px solid #000}
+  blockquote:nth-child(2){transform:none}
+  .ft .cta{grid-template-columns:1fr;gap:36px;padding:56px 0 48px}
+  .ft .cols{grid-template-columns:1fr 1fr}
+  .ft .brand-col{grid-column:1/-1}
+}
+@media (max-width:520px){.steps{grid-template-columns:1fr}.steps li{border-right:0;border-bottom:3px solid #000}.steps li:last-child{border-bottom:0}.ft .cols{grid-template-columns:1fr}.ft .enquire .row2{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="top" id="top">
+  <nav aria-label="Main">
+    <div class="wrap">
+      <a class="logo" href="#top">MJ web designs</a>
+      <ul class="links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+      </ul>
+      <a class="btn" style="padding:9px 18px;box-shadow:3px 3px 0 #000" href="#contact">Let’s talk</a>
+    </div>
+  </nav>
+  <header class="hero">
+    <div class="wrap">
+      <h1>More than just <em>design.</em></h1>
+      <p class="sub">Creative digital experiences for brands that want to stand out.</p>
+      <div class="cta">
+        <a class="btn blue" href="#work">Our work</a>
+        <a class="btn" href="#contact">Let’s talk</a>
+      </div>
+    </div>
+  </header>
+  <div class="tick" aria-hidden="true"><div>
+    <span>Websites</span><span>E-commerce</span><span>Brand identity</span><span>Creative</span><span>Brand films</span><span>Marketing</span>
+    <span>Websites</span><span>E-commerce</span><span>Brand identity</span><span>Creative</span><span>Brand films</span><span>Marketing</span>
+  </div></div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <h2>What we build</h2>
+    <div class="tiles">
+      <div class="tile"><h3>Websites</h3><p>Fast, responsive sites designed around what visitors came to do.</p></div>
+      <div class="tile"><h3>E-commerce</h3><p>Online stores that make it easy to browse, pay and come back.</p></div>
+      <div class="tile"><h3>Brand identity</h3><p>Logo, colors and type that look like you everywhere.</p></div>
+      <div class="tile"><h3>Creative</h3><p>Social posts, banners and print pieces that match your site.</p></div>
+      <div class="tile"><h3>Brand films</h3><p>Short videos that show your story, product and people.</p></div>
+      <div class="tile"><h3>Marketing</h3><p>SEO and campaigns that bring the right customers in.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <h2>Selected projects</h2>
+    <article class="proj">
+      <div class="shot" role="img" aria-label="Project preview placeholder"></div>
+      <div class="info"><p class="tag">Website, Branding</p><h3>Project name</h3><p>What the client needed and what we delivered.</p></div>
+    </article>
+    <article class="proj">
+      <div class="shot" role="img" aria-label="Project preview placeholder"></div>
+      <div class="info"><p class="tag">E-commerce, Marketing</p><h3>Project name</h3><p>What the client needed and what we delivered.</p></div>
+    </article>
+    <p class="note">Replace the placeholders with your own screenshots and links.</p>
+  </div>
+</section>
+
+<section id="industries">
+  <div class="wrap">
+    <h2>Industries we serve</h2>
+    <ul class="ind">
+      <li>Fashion and menswear</li><li>Real estate</li><li>Internet and telecom</li><li>Restaurants</li>
+      <li>Education</li><li>Healthcare</li><li>Local business</li><li>Startups</li>
+    </ul>
+  </div>
+</section>
+
+<section id="why" style="padding-top:0">
+  <div class="wrap">
+    <h2>Why choose us</h2>
+    <div class="whyg">
+      <div class="why"><h3>Design and code, one team</h3><p>What we design is what we build, so nothing gets lost in between.</p></div>
+      <div class="why"><h3>Built for phones first</h3><p>Most visitors arrive on mobile, so every page starts small.</p></div>
+      <div class="why"><h3>Clear pricing and timelines</h3><p>You know the scope, cost and delivery date before we start.</p></div>
+      <div class="why"><h3>Support after launch</h3><p>We stay on to fix, update and improve your site as you grow.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <h2>Our creative process</h2>
+    <ol class="steps">
+      <li><h3>Discover</h3><p>We learn about your business, customers and goals.</p></li>
+      <li><h3>Design</h3><p>Wireframes and visuals for you to review and change.</p></li>
+      <li><h3>Develop</h3><p>We build, test and refine the site on every device.</p></li>
+      <li><h3>Launch</h3><p>We go live, then track results and keep improving.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <h2>Client testimonials</h2>
+    <div class="qs">
+      <blockquote><p>Add a short, specific quote about the result this client got.</p><footer>Client name, Business</footer></blockquote>
+      <blockquote><p>Add a short, specific quote about the result this client got.</p><footer>Client name, Business</footer></blockquote>
+      <blockquote><p>Add a short, specific quote about the result this client got.</p><footer>Client name, Business</footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<footer class="ft" id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <div>
+        <h2>Let us <em>talk.</em></h2>
+        <p>Tell us about your business and we’ll reply with ideas and a quote.</p>
+        <div class="direct">
+          <a href="tel:+919843176704">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.4" stroke-linecap="square" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>
+            +91 98431 76704
+          </a>
+          <a href="mailto:mjwebdesigns.in@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.4" stroke-linecap="square" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="M3 6l9 7 9-7"/></svg>
+            mjwebdesigns.in@gmail.com
+          </a>
+        </div>
+      </div>
+      <form class="box enquire" id="enquiry-form">
+        <h3 class="enq-title">Project enquiry</h3>
+        <div class="row2">
+          <label>Name
+            <input name="name" type="text" autocomplete="name" placeholder="Your name" required>
+          </label>
+          <label>Phone
+            <input name="phone" type="tel" autocomplete="tel" placeholder="+91" required>
+          </label>
+        </div>
+        <label>Email <span class="opt">(optional)</span>
+          <input name="email" type="email" autocomplete="email" placeholder="you@business.com">
+        </label>
+        <label>Service
+          <select name="service">
+            <option>Website</option>
+            <option>E-commerce</option>
+            <option>Brand identity</option>
+            <option>Creative</option>
+            <option>Brand film</option>
+            <option>Marketing</option>
+            <option>Something else</option>
+          </select>
+        </label>
+        <label>Project details
+          <textarea name="message" rows="4" placeholder="What are you building, and by when?" required></textarea>
+        </label>
+        <button class="btn" type="submit">Send enquiry</button>
+        <p class="formnote" id="form-note" role="status" aria-live="polite">We’ll only use these details to reply to your enquiry.</p>
+      </form>
+    </div>
+
+    <div class="cols">
+      <div class="brand-col">
+        <div class="brand">MJ web designs</div>
+        <p class="blurb">More than just design. Creative digital experiences, designed and built by one team.</p>
+      </div>
+      <nav aria-label="Services">
+        <h3>Services</h3>
+        <ul><li><a href="#services">Websites</a></li><li><a href="#services">E-commerce</a></li><li><a href="#services">Brand identity</a></li><li><a href="#services">Creative</a></li><li><a href="#services">Brand films</a></li><li><a href="#services">Marketing</a></li></ul>
+      </nav>
+      <nav aria-label="Company">
+        <h3>Explore</h3>
+        <ul><li><a href="#work">Our work</a></li><li><a href="#why">Why choose us</a></li><li><a href="#process">Our process</a></li><li><a href="#reviews">Testimonials</a></li><li><a href="#contact">Contact</a></li></ul>
+      </nav>
+      <nav aria-label="Social">
+        <h3>Follow</h3>
+        <ul><li><a href="https://wa.me/919843176704">WhatsApp</a></li><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">LinkedIn</a></li></ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="tick" aria-hidden="true"><div>
+    <span>Websites</span><i>*</i><span>E-commerce</span><i>*</i><span>Brand identity</span><i>*</i><span>Creative</span><i>*</i><span>Brand films</span><i>*</i><span>Marketing</span><i>*</i>
+    <span>Websites</span><i>*</i><span>E-commerce</span><i>*</i><span>Brand identity</span><i>*</i><span>Creative</span><i>*</i><span>Brand films</span><i>*</i><span>Marketing</span><i>*</i>
+  </div></div>
+
+  <div class="base">
+    <div class="wrap">
+      <span>© 2026 MJ web designs. All rights reserved.</span>
+      <a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('enquiry-form');
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var data = new FormData(form);
+    var name = String(data.get('name') || '').trim();
+    var phone = String(data.get('phone') || '').trim();
+    var email = String(data.get('email') || '').trim();
+    var service = String(data.get('service') || '').trim();
+    var message = String(data.get('message') || '').trim();
+
+    var body = 'New project enquiry\n\n'
+      + 'Name: ' + name + '\n'
+      + 'Phone: ' + phone + '\n'
+      + 'Email: ' + (email || 'not provided') + '\n'
+      + 'Service: ' + service + '\n\n'
+      + message;
+
+    // No backend on this static site: hand the enquiry to WhatsApp,
+    // with email as a fallback. To use a real backend later, replace
+    // this block with a fetch() POST to your form endpoint.
+    window.open('https://wa.me/919843176704?text=' + encodeURIComponent(body), '_blank', 'noopener');
+
+    var note = document.getElementById('form-note');
+    note.textContent = 'Thanks! WhatsApp should now be open with your message ready to send. If it didn’t open, ';
+    var mail = document.createElement('a');
+    mail.href = 'mailto:mjwebdesigns.in@gmail.com'
+      + '?subject=' + encodeURIComponent('Project enquiry from ' + (name || 'website'))
+      + '&body=' + encodeURIComponent(body);
+    mail.textContent = 'send it by email';
+    note.appendChild(mail);
+    note.appendChild(document.createTextNode(' instead.'));
+
+    form.reset();
+  });
+})();
+</script>
+
+</body>
+</html>
