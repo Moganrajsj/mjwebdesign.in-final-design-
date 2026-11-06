@@ -41,7 +41,12 @@ Gmail requires 2-Step Verification and an App Password
 
 The project is set up for Vercel's static + functions model:
 
-- `vercel.json` sets the build command to `npm run build` and the output
+- `vercel.json` pins `"framework": null` (Vercel's "Other" preset). This is
+  required: the project was first imported while it still had a custom
+  `server.js`, so Vercel saved the `node` framework preset. Left as `node`,
+  Vercel ignores `outputDirectory` and fails with
+  `No entrypoint found in "/vercel/path0"`.
+- `vercel.json` also sets the build command to `npm run build` and the output
   directory to `public`.
 - `api/enquiry.js` is picked up automatically as a serverless function.
 
