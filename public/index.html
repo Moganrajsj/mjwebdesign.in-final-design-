@@ -38,11 +38,35 @@ h2{font-size:clamp(1.9rem,4.6vw,3.4rem);font-weight:800}
 .logo{font:800 1.15rem var(--d);text-decoration:none;letter-spacing:-.04em}
 .links{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-weight:700}
 .links a{text-decoration:none}.links a:hover{text-decoration:underline;text-decoration-thickness:3px}
-.hero{padding:84px 0 72px}
+.hero{padding:84px 0 72px;overflow-x:clip}
 .hero h1{font-size:clamp(2.8rem,10.5vw,8.6rem);font-weight:800;letter-spacing:-.06em;line-height:.9}
-.hero h1 em{font-style:normal;background:#000;color:var(--yel);padding:0 .12em;display:inline-block;transform:rotate(-2deg)}
-.hero .sub{margin-top:30px;font-size:1.3rem;font-weight:700;max-width:32ch}
+.hero h1 em{font-style:normal;background:#000;color:var(--yel);padding:0 .12em;display:inline-block;transform:rotate(-2deg);position:relative}
+.hero h1 .w{display:inline-block;white-space:nowrap;position:relative}
+/* hero text animation: words race in like cars, brake and skid into place */
+.hero h1.anim > .w:nth-child(1){--d:0s;animation:hcarL 1s cubic-bezier(.2,.7,.3,1) var(--d) both}
+.hero h1.anim > .w:nth-child(2){--d:.25s;animation:hcarR 1s cubic-bezier(.2,.7,.3,1) var(--d) both}
+.hero h1.anim > .w:nth-child(3){--d:.5s;animation:hcarL 1s cubic-bezier(.2,.7,.3,1) var(--d) both}
+.hero h1.anim em{--d:.75s;animation:hdrift 1s cubic-bezier(.2,.7,.3,1) var(--d) both}
+.hero h1.anim > .w::after,.hero h1.anim em::after{content:"";position:absolute;top:.12em;height:.62em;width:1.8em;pointer-events:none;background:linear-gradient(#000 0 0) 0 0/100% .05em no-repeat,linear-gradient(#000 0 0) 25% 50%/75% .05em no-repeat,linear-gradient(#000 0 0) 10% 100%/90% .05em no-repeat;animation:hstreak 1s ease-out var(--d) both}
+.hero h1.anim > .w:nth-child(odd)::after{right:100%;transform-origin:right}
+.hero h1.anim > .w:nth-child(even)::after,.hero h1.anim em::after{left:100%;transform-origin:left}
+.hero .sub{margin-top:30px;font-size:1.3rem;font-weight:700;max-width:32ch;animation:hcarL .9s cubic-bezier(.2,.7,.3,1) 1.6s both}
 .cta{display:flex;gap:18px;flex-wrap:wrap;margin-top:36px}
+.hero .cta a:nth-child(1){animation:hcarL .8s cubic-bezier(.2,.7,.3,1) 1.9s both}
+.hero .cta a:nth-child(2){animation:hcarR .8s cubic-bezier(.2,.7,.3,1) 2.05s both}
+@keyframes hcarL{0%{opacity:0;transform:translateX(-75vw) skewX(28deg);filter:blur(10px)}15%{opacity:1}70%{transform:translateX(2.5%) skewX(-9deg);filter:blur(0)}85%{transform:translateX(-1%) skewX(3deg)}}
+@keyframes hcarR{0%{opacity:0;transform:translateX(75vw) skewX(-28deg);filter:blur(10px)}15%{opacity:1}70%{transform:translateX(-2.5%) skewX(9deg);filter:blur(0)}85%{transform:translateX(1%) skewX(-3deg)}}
+@keyframes hdrift{0%{opacity:0;transform:translateX(75vw) rotate(-10deg) skewX(-28deg);filter:blur(10px)}15%{opacity:1}70%{transform:translateX(-2.5%) rotate(-9deg) skewX(10deg);filter:blur(0)}85%{transform:translateX(1%) rotate(0deg) skewX(-3deg)}}
+@keyframes hstreak{0%{opacity:0;transform:scaleX(1.3)}20%{opacity:.9}70%{opacity:.7;transform:scaleX(1)}100%{opacity:0;transform:scaleX(0)}}
+/* i and j dots arrive late, with a bounce */
+.hero h1.pre{visibility:hidden}
+.dd{display:inline-block;position:relative}
+.dd .stem{display:inline-block;clip-path:inset(var(--sy) -.4em -.6em -.4em)}
+.dd .dot{position:absolute;left:0;top:0;display:inline-block;white-space:nowrap;clip-path:inset(-.6em -.4em calc(100% - var(--sy)) -.4em);transform-origin:var(--ox) var(--oy)}
+.hero h1.anim .dd .dot{animation:hdot 1.1s ease-out var(--dd) both,hhop 4.5s ease-in-out calc(var(--dd) + 2s) infinite}
+@keyframes hdot{0%{opacity:0;transform:translate(var(--fx),-5em) scale(.7,1.5);animation-timing-function:cubic-bezier(.5,0,1,.6)}12%{opacity:1}52%{transform:translate(0,0) scale(1.45,.6);animation-timing-function:ease-out}66%{transform:translate(0,-.45em) scale(.85,1.25);animation-timing-function:ease-in}80%{transform:translate(0,0) scale(1.18,.86);animation-timing-function:ease-out}90%{transform:translate(0,-.1em) scale(.97,1.05)}}
+@keyframes hhop{0%,86%,100%{transform:none}92%{transform:translateY(-.14em) scale(.92,1.1)}96%{transform:translateY(0) scale(1.1,.9)}}
+@media (prefers-reduced-motion:reduce){.hero h1.anim > .w::after,.hero h1.anim em::after{display:none}}
 .tick{border-top:3px solid #000;background:#000;color:var(--yel);overflow:hidden;white-space:nowrap}
 .tick div{display:inline-block;padding:14px 0;font:800 1.1rem var(--d);animation:slide 26s linear infinite}
 .tick span{margin:0 26px}
@@ -195,7 +219,7 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
   </nav>
   <header class="hero">
     <div class="wrap">
-      <h1>More than just <em>design.</em></h1>
+      <h1 aria-label="More than just design.">More than just <em>design.</em></h1>
       <p class="sub">Creative digital experiences for brands that want to stand out.</p>
       <div class="cta">
         <a class="btn blue" href="#work">Our work</a>
@@ -541,6 +565,90 @@ document.querySelectorAll('.shot').forEach(function (shot) {
   if ('ResizeObserver' in window) new ResizeObserver(fit).observe(shot);
   else window.addEventListener('resize', fit);
 });
+</script>
+
+<!-- hero: split the headline into words and letters -->
+<script>
+(function(){
+  var h=document.querySelector('.hero h1'); if(!h) return;
+  var i=0;
+  function split(node){
+    Array.from(node.childNodes).forEach(function(n){
+      if(n.nodeType===3){
+        var f=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function(part){
+          if(!part) return;
+          if(/^\s+$/.test(part)){ f.appendChild(document.createTextNode(' ')); return; }
+          var w=document.createElement('span'); w.className='w'; w.setAttribute('aria-hidden','true');
+          part.split('').forEach(function(ch){ var c=document.createElement('span'); c.className='c'; c.style.setProperty('--i',i++); c.textContent=ch; w.appendChild(c); });
+          f.appendChild(w);
+        });
+        n.parentNode.replaceChild(f,n);
+      } else if(n.nodeType===1){ split(n); }
+    });
+  }
+  split(h);
+  h.classList.add('anim');
+})();
+</script>
+
+<!-- hero: measure Unbounded and make the i and j dots arrive late -->
+<script>
+(function(){
+  var h=document.querySelector('.hero h1'); if(!h) return;
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  h.classList.remove('anim'); h.classList.add('pre');
+  var cs=getComputedStyle(h), fam=cs.fontFamily, wt=cs.fontWeight, done=false;
+  function go(){ h.classList.remove('pre'); void h.offsetWidth; h.classList.add('anim'); }
+  function measure(ch){
+    var S=200,pad=40,W=320,H=360,base=240;
+    var cv=document.createElement('canvas'); cv.width=W; cv.height=H;
+    var x=cv.getContext('2d'); x.font=wt+' '+S+'px '+fam; x.textBaseline='alphabetic'; x.fillStyle='#000'; x.fillText(ch,pad,base);
+    var d=x.getImageData(0,0,W,H).data;
+    function row(y){var a=-1,b=-1;for(var i=0;i<W;i++){if(d[(y*W+i)*4+3]>60){if(a<0)a=i;b=i;}}return [a,b];}
+    var top=-1,bot=-1,stem=-1,y,r;
+    for(y=0;y<H;y++){
+      r=row(y);
+      if(top<0){if(r[0]>=0)top=y;}
+      else if(bot<0){if(r[0]<0)bot=y;}
+      else if(r[0]>=0){stem=y;break;}
+    }
+    if(top<0||bot<0||stem<0) return null;
+    var xs=1e9,xe=-1;
+    for(y=top;y<bot;y++){r=row(y);if(r[0]>=0){xs=Math.min(xs,r[0]);xe=Math.max(xe,r[1]);}}
+    return {split:(base-(bot+stem)/2)/S, ox:((xs+xe)/2-pad)/S, oy:(base-(top+bot)/2)/S};
+  }
+  function build(c,delay,fx){
+    var ch=c.textContent, m=measure(ch); if(!m) return;
+    var w=document.createElement('span'); w.className='dd';
+    var s=document.createElement('span'); s.className='stem'; s.textContent=ch;
+    var o=document.createElement('span'); o.className='dot'; o.setAttribute('aria-hidden','true'); o.textContent=ch;
+    var p=document.createElement('span'); p.style.cssText='display:inline-block;width:0;height:0;vertical-align:baseline';
+    o.appendChild(p); w.appendChild(s); w.appendChild(o);
+    c.parentNode.replaceChild(w,c);
+    var fs=parseFloat(getComputedStyle(s).fontSize), bl=p.offsetTop/fs;
+    o.removeChild(p);
+    w.style.setProperty('--sy',(bl-m.split)+'em');
+    w.style.setProperty('--ox',m.ox+'em');
+    w.style.setProperty('--oy',(bl-m.oy)+'em');
+    w.style.setProperty('--dd',delay);
+    w.style.setProperty('--fx',fx);
+  }
+  function run(){
+    if(done) return; done=true;
+    try{
+      Array.prototype.slice.call(h.querySelectorAll('.c')).forEach(function(c){
+        if(c.textContent==='j') build(c,'2.1s','-1.4em');
+        else if(c.textContent==='i') build(c,'2.45s','1.4em');
+      });
+    }catch(e){}
+    go();
+  }
+  setTimeout(run,2500);
+  if(document.fonts && document.fonts.load){
+    document.fonts.load(wt+' 100px '+fam,'ij').then(function(){return document.fonts.ready;}).then(run,run);
+  } else { run(); }
+})();
 </script>
 
 </body>
