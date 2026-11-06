@@ -163,7 +163,15 @@ h2{font-size:clamp(1.9rem,4.6vw,3.4rem);font-weight:800}
 .info h3{font-size:1.7rem}.info p{color:#444}
 .info .btn{align-self:flex-start;margin-top:6px}
 .info .tag{font-weight:800;color:var(--blue)}
-.case-link{display:inline-flex;gap:8px;align-items:center;margin-top:8px;font-weight:800;text-decoration-thickness:2px;text-underline-offset:4px}.case-link:hover{text-decoration-thickness:3px}
+.case-link{display:inline-flex;gap:8px;align-items:center;margin-top:8px;font-weight:800;text-decoration-thickness:2px;text-underline-offset:4px}.case-link:hover{text-decoration-thickness:3px}.tm-preview{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:clamp(18px,3vw,38px);overflow:hidden;background:#FFD60A;color:#080808}
+.tm-preview:before{content:"";position:absolute;right:-12%;top:-38%;width:62%;height:175%;border:clamp(10px,2vw,22px) solid #080808;transform:rotate(28deg);opacity:.12}
+.tm-preview:after{content:"";position:absolute;left:0;right:0;bottom:0;height:12px;background:repeating-linear-gradient(90deg,#080808 0 18px,transparent 18px 34px)}
+.tm-preview-kicker{position:relative;font:800 clamp(.48rem,1vw,.72rem) var(--d);letter-spacing:.1em}
+.tm-preview strong{position:relative;margin-top:12px;font:800 clamp(1.45rem,4vw,3.7rem)/.96 var(--d);letter-spacing:-.08em}
+.tm-preview-sub{position:relative;margin-top:14px;padding:6px 9px;background:#080808;color:#FFD60A;font:800 clamp(.45rem,.95vw,.72rem) var(--b);letter-spacing:.08em}
+.tm-preview-sub i{font-style:normal;color:#fff;padding:0 5px}
+.tm-preview-foot{position:relative;margin-top:18px;font:800 clamp(.4rem,.78vw,.6rem) var(--b);letter-spacing:.14em}
+
 .cover:focus-visible{outline:4px solid var(--yel);outline-offset:3px}
 
 /* industries: icon tiles */
@@ -427,6 +435,26 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
         <p>A website for a masala product company.</p>
         <a class="btn" href="https://www.uganfoods.com" target="_blank" rel="noopener noreferrer">Visit website</a>
         <a class="case-link" href="/projects/ugan-foods/">Read project case study <span aria-hidden="true">→</span></a>
+      </div>
+      </article>
+
+    <article class="proj">
+      <div class="shot">
+        <div class="tm-preview" role="img" aria-label="TM International Tradeline, spices and fresh produce export website project">
+          <span class="tm-preview-kicker">INDIAN EXPORT TRADE</span>
+          <strong>TM<br>INTERNATIONAL</strong>
+          <span class="tm-preview-sub">SPICES <i>+</i> FRESH PRODUCE</span>
+          <span class="tm-preview-foot">DHARMAPURI · TAMIL NADU</span>
+        </div>
+        <a class="cover" href="https://www.tmtradeline.in/" target="_blank" rel="noopener noreferrer" aria-label="Visit the TM International Tradeline website"></a>
+        <span class="domain">tmtradeline.in</span>
+      </div>
+      <div class="info">
+        <p class="tag">Business website · Export trade</p>
+        <h3>TM International Tradeline</h3>
+        <p>A product-led website for an Indian exporter of spices and fresh produce, with catalogue and B2B enquiry sections.</p>
+        <a class="btn" href="https://www.tmtradeline.in/" target="_blank" rel="noopener noreferrer">Visit website</a>
+        <a class="case-link" href="/projects/tm-international-tradeline/">Read project case study <span aria-hidden="true">→</span></a>
       </div>
       </article>
   </div>
