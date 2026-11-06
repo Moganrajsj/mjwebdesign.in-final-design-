@@ -72,14 +72,24 @@ h2{font-size:clamp(1.9rem,4.6vw,3.4rem);font-weight:800}
 .tick span{margin:0 26px}
 @keyframes slide{to{transform:translateX(-50%)}}
 
-/* services: tiles */
-.tiles{display:grid;grid-template-columns:repeat(3,1fr);margin-top:48px;border:3px solid var(--line)}
-.tile{padding:30px 26px 34px;border-right:3px solid var(--line);border-bottom:3px solid var(--line);min-height:210px;transition:background .15s,color .15s}
-.tile:nth-child(3n){border-right:0}.tile:nth-child(n+4){border-bottom:0}
-.tile:hover{background:var(--blue);color:#fff}
-.tile:hover p{color:#fff}
-.tile h3{font-size:1.35rem;margin-bottom:12px}
-.tile p{color:var(--muted)}
+/* services: stacking cards */
+.svc-lead{color:var(--muted);margin-top:14px;max-width:46ch}
+.stack{margin-top:48px}
+.sv{position:sticky;top:calc(env(safe-area-inset-top,0px) + 32px + var(--i)*18px);display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;min-height:300px;padding:36px 44px;border:3px solid var(--line);box-shadow:8px 8px 0 var(--line);margin-bottom:32px}
+.sv-n{font:800 clamp(3rem,8vw,6rem)/1 var(--d);letter-spacing:-.06em}
+.sv h3{font-size:clamp(1.8rem,4vw,3rem);font-weight:800}
+.sv p{margin-top:12px;max-width:40ch}
+.sv-tags{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:20px 0 0;padding:0}
+.sv-tags li{padding:7px 14px;border:3px solid currentColor;font-weight:700;font-size:.95rem}
+.sv-ic{width:clamp(88px,14vw,150px);height:auto}
+.sv.c1,.sv.c5{background:var(--yel);color:#000}
+.sv.c2,.sv.c6{background:var(--blue);color:#fff}
+.sv.c3{background:var(--panel);color:var(--ink)}
+.sv.c4{background:#000;color:#fff}
+@media (max-width:900px){
+  .sv{top:calc(env(safe-area-inset-top,0px) + 24px + var(--i)*12px);grid-template-columns:1fr;gap:14px;min-height:0;padding:26px 22px 30px;box-shadow:6px 6px 0 var(--line);margin-bottom:26px}
+  .sv-ic{position:absolute;right:22px;top:22px;width:72px}
+}
 
 /* projects */
 .work{background:var(--blue);color:#fff}
@@ -182,9 +192,7 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
 @media (max-width:900px){
   .links{display:none}
   section{padding:72px 0}
-  .tiles,.whyg,.qs{grid-template-columns:1fr}
-  .tile,.tile:nth-child(3n){border-right:0;border-bottom:3px solid var(--line)!important}
-  .tile:last-child{border-bottom:0!important}
+  .whyg,.qs{grid-template-columns:1fr}
   .proj,.proj:nth-of-type(even){grid-template-columns:1fr}
   .proj:nth-of-type(even) .shot{order:0;border-left:0}
   .shot{border-right:0;border-bottom:3px solid #000}
@@ -236,13 +244,38 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
 <section id="services">
   <div class="wrap">
     <h2>What we build</h2>
-    <div class="tiles">
-      <div class="tile"><h3>Websites</h3><p>Fast, responsive sites designed around what visitors came to do.</p></div>
-      <div class="tile"><h3>E-commerce</h3><p>Online stores that make it easy to browse, pay and come back.</p></div>
-      <div class="tile"><h3>Brand identity</h3><p>Logo, colors and type that look like you everywhere.</p></div>
-      <div class="tile"><h3>Creative</h3><p>Social posts, banners and print pieces that match your site.</p></div>
-      <div class="tile"><h3>Brand films</h3><p>Short videos that show your story, product and people.</p></div>
-      <div class="tile"><h3>Marketing</h3><p>SEO and campaigns that bring the right customers in.</p></div>
+    <p class="svc-lead">Everything your business needs online, from one team.</p>
+    <div class="stack">
+      <article class="sv c1" style="--i:0">
+        <div class="sv-n">01</div>
+        <div><h3>Websites</h3><p>Fast, responsive sites designed around what visitors came to do.</p><ul class="sv-tags"><li>Business sites</li><li>Portfolios</li><li>Landing pages</li></ul></div>
+        <svg class="sv-ic" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="square" aria-hidden="true"><rect x="12" y="20" width="96" height="80"/><path d="M12 42H108M28 62H68M28 78H92"/></svg>
+      </article>
+      <article class="sv c2" style="--i:1">
+        <div class="sv-n">02</div>
+        <div><h3>E-commerce</h3><p>Online stores that make it easy to browse, pay and come back.</p><ul class="sv-tags"><li>Product pages</li><li>Cart and checkout</li><li>Order management</li></ul></div>
+        <svg class="sv-ic" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="square" aria-hidden="true"><path d="M26 40H94L102 100H18Z"/><path d="M44 52V34A16 16 0 0 1 76 34V52"/></svg>
+      </article>
+      <article class="sv c3" style="--i:2">
+        <div class="sv-n">03</div>
+        <div><h3>Brand identity</h3><p>Logo, colors and type that look like you everywhere.</p><ul class="sv-tags"><li>Logo</li><li>Colors</li><li>Fonts</li></ul></div>
+        <svg class="sv-ic" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="square" aria-hidden="true"><circle cx="44" cy="60" r="30"/><rect x="56" y="32" width="52" height="52"/></svg>
+      </article>
+      <article class="sv c4" style="--i:3">
+        <div class="sv-n">04</div>
+        <div><h3>Creative</h3><p>Social posts, banners and print pieces that match your site.</p><ul class="sv-tags"><li>Social posts</li><li>Banners</li><li>Print pieces</li></ul></div>
+        <svg class="sv-ic" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="miter" aria-hidden="true"><path d="M60 10L72 44H108L78 66L90 102L60 80L30 102L42 66L12 44H48Z"/></svg>
+      </article>
+      <article class="sv c5" style="--i:4">
+        <div class="sv-n">05</div>
+        <div><h3>Brand films</h3><p>Short videos that show your story, product and people.</p><ul class="sv-tags"><li>Short videos</li><li>Product videos</li><li>Story films</li></ul></div>
+        <svg class="sv-ic" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="square" aria-hidden="true"><rect x="10" y="26" width="100" height="68"/><path d="M50 44L78 60L50 76Z" fill="currentColor"/></svg>
+      </article>
+      <article class="sv c6" style="--i:5">
+        <div class="sv-n">06</div>
+        <div><h3>Marketing</h3><p>SEO and campaigns that bring the right customers in.</p><ul class="sv-tags"><li>SEO</li><li>Social media</li><li>Campaigns</li></ul></div>
+        <svg class="sv-ic" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="square" aria-hidden="true"><path d="M16 104H104M28 104V76M52 104V60M76 104V44"/><path d="M20 52L50 30L72 40L100 14M82 14H100V32"/></svg>
+      </article>
     </div>
   </div>
 </section>
