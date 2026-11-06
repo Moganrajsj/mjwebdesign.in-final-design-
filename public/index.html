@@ -111,10 +111,37 @@ h2{font-size:clamp(1.9rem,4.6vw,3.4rem);font-weight:800}
 .info .tag{font-weight:800;color:var(--blue)}
 .cover:focus-visible{outline:4px solid var(--yel);outline-offset:3px}
 
-/* industries */
-.ind{display:flex;flex-wrap:wrap;gap:14px;margin:40px 0 0;padding:0;list-style:none}
-.ind li{padding:14px 24px;border:3px solid var(--line);font-weight:800;font-size:1.05rem}
-.ind li:nth-child(3n+1){background:var(--yel);color:#000;border-color:#000}
+/* industries: icon tiles */
+.inds{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;list-style:none;margin:48px 0 0;padding:0}
+.inds li{display:flex;flex-direction:column;justify-content:space-between;gap:36px;min-height:210px;padding:26px 24px;border:3px solid var(--line);background:var(--panel);color:var(--ink);font:800 1.15rem/1.2 var(--d);letter-spacing:-.03em;transition:transform .15s,box-shadow .15s}
+.inds li:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--line)}
+.inds svg{width:60px;height:60px;transition:transform .2s}
+.inds li:hover svg{transform:rotate(-8deg) scale(1.1)}
+.inds .y{background:var(--yel);color:#000}
+.inds .b{background:var(--blue);color:#fff}
+.inds-note{margin-top:32px;color:var(--muted);font-weight:700}
+.inds-note a{color:var(--ink)}
+@media (max-width:900px){.inds{grid-template-columns:repeat(2,1fr);gap:14px}.inds li{min-height:170px;padding:20px 16px;font-size:1rem}.inds svg{width:48px;height:48px}}
+@media (prefers-reduced-motion:reduce){.inds li,.inds svg{transition:none}}
+
+/* cinematic dialogues */
+.cine{position:relative;margin-top:96px;background:#000;color:#fff;border-top:3px solid var(--line);border-bottom:3px solid var(--line)}
+.cine::before,.cine::after{content:"";position:absolute;left:0;right:0;height:14px;background:repeating-linear-gradient(90deg,#FFD60A 0 18px,transparent 18px 40px)}
+.cine::before{top:12px}.cine::after{bottom:12px}
+.rec{position:absolute;left:28px;top:44px;z-index:2;display:flex;align-items:center;gap:10px;font:700 .9rem var(--b);opacity:.85}
+.rec i{width:12px;height:12px;border-radius:50%;background:#ff3b30;animation:blink 1.2s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.cine-screen{position:relative;max-width:1100px;margin:0 auto;min-height:clamp(320px,40vw,440px)}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:24px;padding:76px 32px;opacity:0;animation:scene 32s linear var(--t) infinite}
+.scene:nth-child(1){--t:0s}.scene:nth-child(2){--t:8s}.scene:nth-child(3){--t:16s}.scene:nth-child(4){--t:24s}
+.scene .who{display:block;font:700 .85rem var(--b);letter-spacing:.04em;color:#bbb;margin-bottom:8px}
+.scene .ask{font:700 clamp(1.15rem,2.6vw,1.7rem)/1.35 var(--b);max-width:34ch}
+.scene .reply{font:800 clamp(1.5rem,4.4vw,3.1rem)/1.1 var(--d);letter-spacing:-.04em;color:var(--yel);max-width:22ch;animation:reply 32s linear var(--t) infinite}
+@keyframes scene{0%{opacity:0}2%{opacity:1}23%{opacity:1}25%,100%{opacity:0}}
+@keyframes reply{0%,9%{opacity:0;transform:translateY(12px)}12%,100%{opacity:1;transform:none}}
+.why-wrap{margin-top:96px}
+@media (max-width:900px){.cine{margin-top:72px}.rec{left:20px}.scene{padding:76px 20px}.why-wrap{margin-top:72px}}
+@media (prefers-reduced-motion:reduce){.cine-screen{min-height:0;display:grid;grid-template-columns:repeat(2,1fr)}.scene{position:static;opacity:1;padding:70px 32px 50px}.scene .reply{opacity:1;transform:none}.rec i{animation:none}}
 
 /* why */
 .whyg{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:48px}
@@ -349,15 +376,30 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
 <section id="industries">
   <div class="wrap">
     <h2>Industries we serve</h2>
-    <ul class="ind">
-      <li>Fashion and menswear</li><li>Real estate</li><li>Internet and telecom</li><li>Restaurants</li>
-      <li>Education</li><li>Healthcare</li><li>Local business</li><li>Startups</li>
+    <ul class="inds">
+      <li class="y"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="miter" aria-hidden="true"><path d="M20 10L8 18L14 28L20 25V54H44V25L50 28L56 18L44 10C42 15 38 17 32 17C26 17 22 15 20 10Z"/></svg>Fashion and menswear</li>
+      <li><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M8 30L32 10L56 30M14 26V54H50V26M26 54V38H38V54"/></svg>Real estate</li>
+      <li class="b"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M8 26C22 14 42 14 56 26M16 36C26 28 38 28 48 36M25 46C29 43 35 43 39 46M31 54H33"/></svg>Internet and telecom</li>
+      <li><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M12 8V22C12 26 15 28 18 28S24 26 24 22V8M18 8V56M44 8C38 14 38 28 44 32V56M44 8V32"/></svg>Restaurants</li>
+      <li><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M32 12L58 24L32 36L6 24ZM16 30V44C24 52 40 52 48 44V30M58 24V40"/></svg>Education</li>
+      <li class="y"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="miter" aria-hidden="true"><path d="M24 10H40V24H54V40H40V54H24V40H10V24H24Z"/></svg>Healthcare</li>
+      <li><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M8 24L12 10H52L56 24ZM12 24V54H52V24M26 54V38H38V54"/></svg>Local business</li>
+      <li class="b"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M32 8C21 8 15 16 15 24C15 31 20 35 22 40H42C44 35 49 31 49 24C49 16 43 8 32 8ZM24 46H40M27 52H37"/></svg>Startups</li>
     </ul>
+    <p class="inds-note">Not on the list? We build for every kind of business. <a href="#contact">Let’s talk.</a></p>
   </div>
-</section>
 
-<section id="why" style="padding-top:0">
-  <div class="wrap">
+  <div class="cine">
+    <div class="rec" aria-hidden="true"><i></i>Now showing</div>
+    <div class="cine-screen">
+      <div class="scene"><div><span class="who">Client</span><p class="ask">“I just need a simple website.”</p></div><div><span class="who">MJ web designs</span><p class="reply">“You need a first impression. We’ll make it unforgettable.”</p></div></div>
+      <div class="scene"><div><span class="who">Client</span><p class="ask">“Will it work on my customers’ phones?”</p></div><div><span class="who">MJ web designs</span><p class="reply">“It starts on the phone. Everything else follows.”</p></div></div>
+      <div class="scene"><div><span class="who">Client</span><p class="ask">“What happens after the website goes live?”</p></div><div><span class="who">MJ web designs</span><p class="reply">“We stay. Launch day is only the opening scene.”</p></div></div>
+      <div class="scene"><div><span class="who">Client</span><p class="ask">“So where do we begin?”</p></div><div><span class="who">MJ web designs</span><p class="reply">“Right here. Tell us your story.”</p></div></div>
+    </div>
+  </div>
+
+  <div class="wrap why-wrap" id="why">
     <h2>Why choose us</h2>
     <div class="whyg">
       <div class="why"><h3>Design and code, one team</h3><p>What we design is what we build, so nothing gets lost in between.</p></div>
