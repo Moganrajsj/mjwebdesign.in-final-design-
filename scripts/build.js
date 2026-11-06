@@ -11,6 +11,23 @@ if (!fs.existsSync(index)) {
   process.exit(1);
 }
 
+const requiredServicePages = [
+  "website-design",
+  "ecommerce",
+  "brand-identity",
+  "creative-design",
+  "brand-films",
+  "seo-digital-marketing",
+];
+
+for (const slug of requiredServicePages) {
+  const page = path.join(publicDir, "services", slug, "index.html");
+  if (!fs.existsSync(page)) {
+    console.error(`Build failed: service page is missing for "${slug}".`);
+    process.exit(1);
+  }
+}
+
 const files = fs.readdirSync(publicDir);
-console.log(`Static site ready in public/ (${files.length} files):`);
+console.log(`Static site ready in public/ (${files.length} top-level files) and ${requiredServicePages.length} service pages:`);
 for (const file of files) console.log(" -", file);
