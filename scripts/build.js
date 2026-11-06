@@ -28,6 +28,21 @@ for (const slug of requiredServicePages) {
   }
 }
 
+const requiredProjectPages = [
+  "sriram-broadband",
+  "ayli-womens-fashion",
+  "spidy-clothing",
+  "ugan-foods",
+];
+
+for (const slug of requiredProjectPages) {
+  const page = path.join(publicDir, "projects", slug, "index.html");
+  if (!fs.existsSync(page)) {
+    console.error(`Build failed: project case study is missing for "${slug}".`);
+    process.exit(1);
+  }
+}
+
 const files = fs.readdirSync(publicDir);
-console.log(`Static site ready in public/ (${files.length} top-level files) and ${requiredServicePages.length} service pages:`);
+console.log(`Static site ready in public/ (${files.length} top-level files), ${requiredServicePages.length} service pages and ${requiredProjectPages.length} project case studies:`);
 for (const file of files) console.log(" -", file);
