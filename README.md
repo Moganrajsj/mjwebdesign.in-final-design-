@@ -10,6 +10,9 @@ public/          Static site (served at /)
   index.html
   service-page.css
   services/       Six dedicated service pages
+  projects/       Four portfolio case studies
+  service-page.css
+  portfolio-page.css
   ayli.jpg
   sriram-broadband.jpg
 api/enquiry.js   Serverless function for the contact form (POST /api/enquiry)
