@@ -13,6 +13,7 @@ public/          Static site (served at /)
   portfolio-page.css
   services/       Six dedicated service pages
   projects/       Five portfolio case studies
+  website-design-company-tamil-nadu/  Statewide services landing page
   ayli.jpg        Saved AYLI website visual
   sriram-broadband.jpg
 api/enquiry.js    Serverless function for the contact form (POST /api/enquiry)
