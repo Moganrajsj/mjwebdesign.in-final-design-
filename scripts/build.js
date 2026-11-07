@@ -11,6 +11,18 @@ if (!fs.existsSync(index)) {
   process.exit(1);
 }
 
+const requiredLegalPages = [
+  "privacy-policy",
+];
+
+for (const slug of requiredLegalPages) {
+  const page = path.join(publicDir, slug, "index.html");
+  if (!fs.existsSync(page)) {
+    console.error(`Build failed: legal page is missing for "${slug}".`);
+    process.exit(1);
+  }
+}
+
 const favicon = path.join(publicDir, "favicon.png");
 if (!fs.existsSync(favicon)) {
   console.error("Build failed: public/favicon.png is missing.");
