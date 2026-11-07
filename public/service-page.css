@@ -81,4 +81,5 @@ details p { max-width: 760px; margin: 14px 0 0; color: var(--muted); }
   .step:nth-child(2) { border-bottom: 3px solid var(--line); }
   .step:last-child { border-bottom: 0; }
 }
+.card a{display:inline-block;margin-top:14px;font-weight:800;text-decoration-thickness:2px;text-underline-offset:4px}.card a:hover{text-decoration-thickness:3px}
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
