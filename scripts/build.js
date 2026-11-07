@@ -17,6 +17,18 @@ if (!fs.existsSync(favicon)) {
   process.exit(1);
 }
 
+const requiredLocationPages = [
+  "website-design-company-tamil-nadu",
+];
+
+for (const slug of requiredLocationPages) {
+  const page = path.join(publicDir, slug, "index.html");
+  if (!fs.existsSync(page)) {
+    console.error(`Build failed: location landing page is missing for "${slug}".`);
+    process.exit(1);
+  }
+}
+
 const requiredServicePages = [
   "website-design",
   "ecommerce",
@@ -51,5 +63,5 @@ for (const slug of requiredProjectPages) {
 }
 
 const files = fs.readdirSync(publicDir);
-console.log(`Static site ready in public/ (${files.length} top-level files), ${requiredServicePages.length} service pages and ${requiredProjectPages.length} project case studies:`);
+console.log(`Static site ready in public/ (${files.length} top-level files), ${requiredServicePages.length} service pages, ${requiredProjectPages.length} project case studies and ${requiredLocationPages.length} location landing pages:`);
 for (const file of files) console.log(" -", file);
