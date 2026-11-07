@@ -11,6 +11,12 @@ if (!fs.existsSync(index)) {
   process.exit(1);
 }
 
+const favicon = path.join(publicDir, "favicon.png");
+if (!fs.existsSync(favicon)) {
+  console.error("Build failed: public/favicon.png is missing.");
+  process.exit(1);
+}
+
 const requiredServicePages = [
   "website-design",
   "ecommerce",

@@ -8,6 +8,7 @@ serverless project-enquiry endpoint that sends email through Gmail SMTP.
 ```
 public/          Static site (served at /)
   index.html
+  favicon.png
   service-page.css
   portfolio-page.css
   services/       Six dedicated service pages
