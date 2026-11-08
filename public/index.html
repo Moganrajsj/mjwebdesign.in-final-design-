@@ -216,19 +216,41 @@ h2{font-size:clamp(1.9rem,4.6vw,3.4rem);font-weight:800}
 @media (max-width:900px){.cine{margin-top:72px}.rec{left:20px}.scene{padding:76px 20px}.why-wrap{margin-top:72px}}
 @media (prefers-reduced-motion:reduce){.cine-screen{min-height:0;display:grid;grid-template-columns:repeat(2,1fr)}.scene{position:static;opacity:1;padding:70px 32px 50px}.scene .reply{opacity:1;transform:none}.rec i{animation:none}}
 
-/* Local SEO: Dharmapuri and Tamil Nadu */
-.local-seo{padding:88px 0;background:var(--yel);color:#000;border-top:3px solid #000;border-bottom:3px solid #000}
-.local-seo-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
-.local-kicker{font:800 .78rem var(--d);letter-spacing:.07em;margin:0 0 18px}
-.local-seo h2{font-size:clamp(1.9rem,4.6vw,3.4rem);max-width:760px}
-.local-seo p:not(.local-kicker){max-width:690px;margin-top:18px;font-weight:600}
-.local-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:28px}
-.local-text-link{font-weight:800;text-decoration-thickness:2px;text-underline-offset:4px}
-.local-points{display:grid;border:3px solid #000;background:#fff;box-shadow:8px 8px 0 #000}
-.local-points div{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:center;padding:18px 20px;border-bottom:2px solid #000;font-weight:800}
-.local-points div:last-child{border-bottom:0}
-.local-points strong{font:800 .8rem var(--d);color:var(--blue)}
-@media(max-width:800px){.local-seo{padding:68px 0}.local-seo-grid{grid-template-columns:1fr;gap:32px}}
+/* MJ creative philosophy */
+.creative-philosophy{padding:clamp(72px,9vw,120px) 0;background:var(--yel);color:#000;border-block:3px solid #000;overflow:hidden}
+.creative-topline{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:30px}
+.creative-kicker,.creative-index,.creative-card-head{font:800 .76rem var(--d);letter-spacing:.06em}
+.creative-index{color:#333}
+.creative-philosophy h2{max-width:1100px;font-size:clamp(2.2rem,6.2vw,5.4rem);line-height:1.08;letter-spacing:-.065em}
+.creative-philosophy h2 span{color:var(--blue)}
+.creative-intro{display:flex;justify-content:space-between;align-items:center;gap:30px;margin:28px 0 46px}
+.creative-intro p{max-width:650px;font-size:1.04rem;font-weight:600}
+.creative-stamp{display:grid;place-content:center;flex:0 0 76px;height:76px;border:3px solid #000;border-radius:50%;background:#fff;text-align:center;font:800 .82rem/1.05 var(--d);transform:rotate(10deg)}
+.creative-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.creative-card{position:relative;min-height:420px;padding:22px;border:3px solid #000;background:#fff;box-shadow:7px 7px 0 #000;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.creative-card:hover{transform:translateY(-8px) rotate(-.5deg);box-shadow:11px 14px 0 #000}
+.creative-card-head{display:flex;justify-content:space-between;align-items:center}
+.creative-card-head span:last-child{font-size:1.5rem}
+.creative-art{height:185px;margin:20px 0;position:relative;display:grid;place-items:center;overflow:hidden}
+.think-art{background:#f1f2ff}
+.think-orbit{position:absolute;width:145px;height:145px;border:3px solid var(--blue);border-radius:50%;animation:creative-orbit 12s linear infinite}
+.orbit-two{width:105px;height:170px;border-color:#000;transform:rotate(58deg);animation-direction:reverse}
+.think-core{display:grid;place-items:center;width:78px;height:78px;border:3px solid #000;background:var(--yel);border-radius:50%;font:800 .8rem var(--d);z-index:1}
+.create-art{background:var(--blue)}
+.create-block{position:absolute;width:70px;height:70px;border:3px solid #000;background:var(--yel);transform:rotate(45deg);animation:creative-float 3s ease-in-out infinite}
+.block-one{left:18%;top:30%}.block-two{left:42%;top:12%;background:#fff;animation-delay:-1s}.block-three{left:63%;top:42%;animation-delay:-2s}
+.create-cross{position:absolute;color:#fff;font:800 4rem var(--d);right:12%;bottom:0}
+.inspire-art{background:#080808}
+.inspire-sun{position:absolute;width:150px;height:150px;border:3px solid var(--yel);border-radius:50%;box-shadow:0 0 0 15px #1f3bff,0 0 0 30px #ffd60a;opacity:.9}
+.inspire-word{position:relative;color:#fff;font:800 1.45rem/1 var(--d);text-align:center;letter-spacing:-.07em;transform:rotate(-8deg)}
+.creative-card h3{font:800 clamp(1.8rem,3vw,2.5rem)/1 var(--d);letter-spacing:-.06em}
+.creative-card h3 span{color:var(--blue)}
+.creative-card p{margin-top:12px;color:#333;font-weight:600;font-size:.93rem}
+@keyframes creative-orbit{to{transform:rotate(360deg)}}
+@keyframes creative-float{0%,100%{translate:0 0}50%{translate:0 -12px}}
+@media(max-width:850px){.creative-steps{grid-template-columns:1fr 1fr}.creative-card:last-child{grid-column:1/-1;min-height:380px}}
+@media(max-width:560px){.creative-topline{align-items:flex-start;flex-direction:column;gap:8px}.creative-philosophy h2 br{display:none}.creative-intro{align-items:flex-start}.creative-stamp{flex-basis:62px;height:62px}.creative-steps{grid-template-columns:1fr}.creative-card,.creative-card:last-child{grid-column:auto;min-height:0}.creative-art{height:165px}}
+@media(prefers-reduced-motion:reduce){.think-orbit,.create-block{animation:none!important}.creative-card{transition:none}}
 /* why */
 .whyg{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:48px}
 .why{padding:28px;background:var(--panel);border-left:10px solid var(--blue)}
@@ -483,23 +505,36 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
   </div>
 </section>
 
-<section class="local-seo" id="dharmapuri-tamil-nadu">
-  <div class="wrap local-seo-grid">
-    <div>
-      <p class="local-kicker">BASED IN DHARMAPURI · SERVING TAMIL NADU</p>
-      <h2>Website Design Company in Dharmapuri</h2>
-      <p>MJ WEB DESIGNS is a website design company in Dharmapuri, helping local businesses find a website designer or website developer for professional business websites, e-commerce websites, logo design and digital marketing. We work with small businesses, shops and service providers that want to reach more customers online. Customers can meet us at our Dharmapuri office, and on-site visits can be arranged when a project requires them.</p>
-      <p>We also work with businesses across Tamil Nadu through remote project discussions, reviews and approvals, with in-person visits arranged according to the project and location. If you are searching for website design in Dharmapuri (தர்மபுரி இணையதள வடிவமைப்பு / வெப்சைட் டிசைன் தர்மபுரி), tell us about your business and the website you need.</p>
-      <div class="local-actions">
-        <a class="btn blue" href="/#contact">Discuss your project</a>
-        <a class="local-text-link" href="/website-design-company-tamil-nadu/">Explore our Tamil Nadu services →</a>
-      </div>
+<section class="creative-philosophy" id="creative-philosophy" aria-labelledby="creative-title">
+  <div class="wrap">
+    <div class="creative-topline">
+      <p class="creative-kicker">THE MJ CREATIVE PHILOSOPHY</p>
+      <span class="creative-index">IDEAS → IMPACT / 001</span>
     </div>
-    <div class="local-points">
-      <div><strong>01</strong><span>Business website design and web development</span></div>
-      <div><strong>02</strong><span>E-commerce websites and online stores for shops</span></div>
-      <div><strong>03</strong><span>SEO and digital marketing support</span></div>
-      <div><strong>04</strong><span>Brand identity and creative design</span></div>
+    <h2 id="creative-title">We don't just make things look good.<br><span>We make ideas come alive.</span></h2>
+    <div class="creative-intro">
+      <p>Every project begins with a thought. We shape it with imagination, bring it to life through design and build experiences that make people stop and look.</p>
+      <span class="creative-stamp" aria-hidden="true">MJ<br>WD</span>
+    </div>
+    <div class="creative-steps">
+      <article class="creative-card creative-think">
+        <div class="creative-card-head"><span>01 / THE SPARK</span><span aria-hidden="true">✳</span></div>
+        <div class="creative-art think-art" aria-hidden="true"><span class="think-orbit orbit-one"></span><span class="think-orbit orbit-two"></span><span class="think-core">IDEA</span></div>
+        <h3>THINK<span>.</span></h3>
+        <p>Every great design starts with an idea. We look beyond the brief to find the thought worth bringing to life.</p>
+      </article>
+      <article class="creative-card creative-create">
+        <div class="creative-card-head"><span>02 / THE PROCESS</span><span aria-hidden="true">↗</span></div>
+        <div class="creative-art create-art" aria-hidden="true"><span class="create-block block-one"></span><span class="create-block block-two"></span><span class="create-block block-three"></span><span class="create-cross">+</span></div>
+        <h3>CREATE<span>.</span></h3>
+        <p>We turn ideas into meaningful experiences through thoughtful design, purposeful details and smart development.</p>
+      </article>
+      <article class="creative-card creative-inspire">
+        <div class="creative-card-head"><span>03 / THE IMPACT</span><span aria-hidden="true">✦</span></div>
+        <div class="creative-art inspire-art" aria-hidden="true"><span class="inspire-sun"></span><span class="inspire-word">MAKE<br>IT<br>MATTER</span></div>
+        <h3>INSPIRE<span>.</span></h3>
+        <p>We create digital experiences and visuals that leave an impression and give your brand a memorable presence.</p>
+      </article>
     </div>
   </div>
 </section>
