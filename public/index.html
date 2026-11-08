@@ -221,8 +221,8 @@ h2{font-size:clamp(1.9rem,4.6vw,3.4rem);font-weight:800}
 .creative-topline{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:30px}
 .creative-kicker,.creative-index,.creative-card-head{font:800 .76rem var(--d);letter-spacing:.06em}
 .creative-index{color:#333}
-.creative-philosophy h2{max-width:1100px;font-size:clamp(2.2rem,6.2vw,5.4rem);line-height:1.08;letter-spacing:-.065em}
-.creative-philosophy h2 span{color:var(--blue)}
+.creative-philosophy h2{max-width:1150px;font-size:clamp(2.8rem,10.5vw,8.6rem);font-weight:800;line-height:.9;letter-spacing:-.06em}
+.creative-philosophy h2 em{font-style:normal;background:#000;color:var(--yel);padding:0 .12em;display:inline-block;transform:rotate(-2deg);position:relative}
 .creative-intro{display:flex;justify-content:space-between;align-items:center;gap:30px;margin:28px 0 46px}
 .creative-intro p{max-width:650px;font-size:1.04rem;font-weight:600}
 .creative-stamp{display:grid;place-content:center;flex:0 0 76px;height:76px;border:3px solid #000;border-radius:50%;background:#fff;text-align:center;font:800 .82rem/1.05 var(--d);transform:rotate(10deg)}
@@ -249,7 +249,7 @@ h2{font-size:clamp(1.9rem,4.6vw,3.4rem);font-weight:800}
 @keyframes creative-orbit{to{transform:rotate(360deg)}}
 @keyframes creative-float{0%,100%{translate:0 0}50%{translate:0 -12px}}
 @media(max-width:850px){.creative-steps{grid-template-columns:1fr 1fr}.creative-card:last-child{grid-column:1/-1;min-height:380px}}
-@media(max-width:560px){.creative-topline{align-items:flex-start;flex-direction:column;gap:8px}.creative-philosophy h2 br{display:none}.creative-intro{align-items:flex-start}.creative-stamp{flex-basis:62px;height:62px}.creative-steps{grid-template-columns:1fr}.creative-card,.creative-card:last-child{grid-column:auto;min-height:0}.creative-art{height:165px}}
+@media(max-width:560px){.creative-topline{align-items:flex-start;flex-direction:column;gap:8px}.creative-intro{align-items:flex-start}.creative-stamp{flex-basis:62px;height:62px}.creative-steps{grid-template-columns:1fr}.creative-card,.creative-card:last-child{grid-column:auto;min-height:0}.creative-art{height:165px}}
 @media(prefers-reduced-motion:reduce){.think-orbit,.create-block{animation:none!important}.creative-card{transition:none}}
 /* why */
 .whyg{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:48px}
@@ -511,7 +511,7 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
       <p class="creative-kicker">THE MJ CREATIVE PHILOSOPHY</p>
       <span class="creative-index">IDEAS → IMPACT / 001</span>
     </div>
-    <h2 id="creative-title">We don't just make things look good.<br><span>We make ideas come alive.</span></h2>
+    <h2 id="creative-title">We don't just make things<br><em>look good.</em><br>We make ideas<br><em>come alive.</em></h2>
     <div class="creative-intro">
       <p>Every project begins with a thought. We shape it with imagination, bring it to life through design and build experiences that make people stop and look.</p>
       <span class="creative-stamp" aria-hidden="true">MJ<br>WD</span>
