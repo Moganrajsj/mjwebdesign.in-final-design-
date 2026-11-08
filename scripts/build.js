@@ -92,6 +92,27 @@ for (const slug of requiredInsightsPages) {
   }
 }
 
+const requiredAiInsights = [
+  "mj-insights/gpt-vs-claude-vs-gemini-latest-ai-model-comparison",
+  "mj-insights/what-are-ai-reasoning-models",
+  "mj-insights/top-ai-models-for-coding-2026",
+  "mj-insights/understanding-ai-benchmark-scores-gpqa-swebench-aime",
+  "mj-insights/best-open-source-ai-models-for-local-use",
+  "mj-insights/how-ai-agents-are-changing-software-development",
+  "mj-insights/ai-model-releases-monthly-roundup-november-2026",
+  "mj-insights/what-is-an-llm-context-window",
+  "mj-insights/ai-image-generation-vs-ai-video-generation",
+  "mj-insights/how-to-run-ai-models-locally-on-your-laptop",
+];
+
+for (const slug of requiredAiInsights) {
+  const page = path.join(publicDir, slug, "index.html");
+  if (!fs.existsSync(page)) {
+    console.error(`Build failed: AI insights page is missing for "${slug}".`);
+    process.exit(1);
+  }
+}
+
 const files = fs.readdirSync(publicDir);
 console.log(`Static site ready in public/ (${files.length} top-level files), ${requiredServicePages.length} service pages, ${requiredProjectPages.length} project case studies and ${requiredLocationPages.length} location landing pages:`);
 for (const file of files) console.log(" -", file);
