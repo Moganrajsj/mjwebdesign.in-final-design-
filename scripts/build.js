@@ -75,6 +75,23 @@ for (const slug of requiredProjectPages) {
   }
 }
 
+const requiredInsightsPages = [
+  "mj-insights",
+  "mj-insights/how-much-does-a-business-website-cost-in-tamil-nadu",
+  "mj-insights/why-every-small-business-needs-a-website",
+  "mj-insights/website-vs-instagram-which-is-better-for-your-business",
+  "mj-insights/7-important-features-every-business-website-should-have",
+  "mj-insights/how-to-start-an-online-store-in-tamil-nadu",
+];
+
+for (const slug of requiredInsightsPages) {
+  const page = path.join(publicDir, slug, "index.html");
+  if (!fs.existsSync(page)) {
+    console.error(`Build failed: insights page is missing for "${slug}".`);
+    process.exit(1);
+  }
+}
+
 const files = fs.readdirSync(publicDir);
 console.log(`Static site ready in public/ (${files.length} top-level files), ${requiredServicePages.length} service pages, ${requiredProjectPages.length} project case studies and ${requiredLocationPages.length} location landing pages:`);
 for (const file of files) console.log(" -", file);
