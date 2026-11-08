@@ -13,6 +13,7 @@ if (!fs.existsSync(index)) {
 
 const requiredLegalPages = [
   "privacy-policy",
+  "about-us",
 ];
 
 for (const slug of requiredLegalPages) {
