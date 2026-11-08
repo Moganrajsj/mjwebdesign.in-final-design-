@@ -92,6 +92,23 @@ for (const slug of requiredInsightsPages) {
   }
 }
 
+const requiredNewInsights = [
+  "mj-insights/how-to-choose-the-best-website-designer-in-tamil-nadu",
+  "mj-insights/how-much-does-website-development-cost-in-india",
+  "mj-insights/local-seo-guide-small-businesses-tamil-nadu",
+  "mj-insights/google-business-profile-complete-beginners-guide",
+  "mj-insights/why-website-not-showing-on-google",
+  "mj-insights/how-to-submit-website-to-google-search-console",
+];
+
+for (const slug of requiredNewInsights) {
+  const page = path.join(publicDir, slug, "index.html");
+  if (!fs.existsSync(page)) {
+    console.error(`Build failed: new insights page is missing for "${slug}".`);
+    process.exit(1);
+  }
+}
+
 const requiredAiInsights = [
   "mj-insights/gpt-vs-claude-vs-gemini-latest-ai-model-comparison",
   "mj-insights/what-are-ai-reasoning-models",
