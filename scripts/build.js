@@ -109,6 +109,24 @@ for (const slug of requiredNewInsights) {
   }
 }
 
+const requiredModelLaunchInsights = [
+  "mj-insights/kimi-k3-1-pro-open-weight-ai-model",
+  "mj-insights/qwen3-8-max-ai-model",
+  "mj-insights/deepseek-v4-1-flash-1017-model",
+  "mj-insights/mistral-large-4-open-weight-model",
+  "mj-insights/liquid-ai-lfm3-1-7b-model",
+  "mj-insights/ricursive-ripple-65b-preview-model",
+  "mj-insights/nvidia-nemotron-3-5-transcribe-model",
+];
+
+for (const slug of requiredModelLaunchInsights) {
+  const page = path.join(publicDir, slug, "index.html");
+  if (!fs.existsSync(page)) {
+    console.error(`Build failed: model launch insight is missing for "${slug}".`);
+    process.exit(1);
+  }
+}
+
 const requiredAiInsights = [
   "mj-insights/gpt-vs-claude-vs-gemini-latest-ai-model-comparison",
   "mj-insights/what-are-ai-reasoning-models",
