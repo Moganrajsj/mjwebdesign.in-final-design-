@@ -27,6 +27,17 @@ h1,h2,h3{font-family:var(--display);font-weight:800}h1{font-size:clamp(32px,4vw,
 @media(max-width:1120px){.layout{grid-template-columns:250px minmax(0,1fr)}.rightbar{display:none}}
 @media(max-width:720px){.topbar{padding:0 14px;height:64px}.toplinks{gap:10px;font-size:11px}.toplinks a:first-child{display:none}.layout{display:block}.sidebar{display:none;position:fixed;z-index:30;left:0;top:64px;width:min(88vw,310px);height:calc(100vh - 64px);box-shadow:8px 0 25px #0002}.sidebar.open{display:block}.mobile-menu{display:inline-block}.main{padding:28px 18px 60px}h2{font-size:23px}.intro{font-size:16px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* MJ brand palette hard override */
+.label{background:#FFD60A!important;color:#000!important}
+.tip,.success{background:#fff!important;border-left-color:#FFD60A!important;color:#000!important}
+.warning{background:#f1f2ff!important;border-left-color:#1F3BFF!important;color:#000!important}
+.sidebar{background:#f1f2ff!important}
+.side-link:hover,.side-link.active{background:#FFD60A!important;color:#000!important;border-left-color:#1F3BFF!important}
+.node{background:#FFD60A!important;color:#000!important}
+.arrow{color:#1F3BFF!important}
+
+<!-- MJ brand palette hard override v2 -->
 </style>
 </head>
 <body>
