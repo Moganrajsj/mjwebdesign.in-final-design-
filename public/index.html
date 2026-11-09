@@ -353,28 +353,21 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
 @media (max-width:520px){.steps{grid-template-columns:1fr}.steps li{border-right:0;border-bottom:3px solid #000}.steps li:last-child{border-bottom:0}.ft .cols{grid-template-columns:1fr}.ft .enquire .row2{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
 
-/* College projects: swipeable card stack */
+/* College projects section */
 .cp-lead{color:var(--muted);margin-top:14px;max-width:52ch}
-.cs{position:relative;max-width:540px;height:500px;margin:56px auto 0;touch-action:pan-y;outline-offset:8px}
-.cs-card{position:absolute;inset:0 38px 38px 0;display:flex;flex-direction:column;padding:32px;border:3px solid var(--line);box-shadow:8px 8px 0 var(--line);user-select:none;-webkit-user-select:none;cursor:grab;transition:transform .6s cubic-bezier(.2,.9,.3,1.25),opacity .3s;will-change:transform}
-.cs-card:active{cursor:grabbing}
-.c-b{background:var(--blue);color:#fff}.c-k{background:#000;color:#fff}.c-y{background:var(--yel);color:#000}
-.cs-card svg{width:72px;height:72px;margin-bottom:18px;flex:none}
-.cs-n{position:absolute;top:22px;right:26px;font:800 3rem/1 var(--d);letter-spacing:-.06em;opacity:.28}
-.cs-card h3{font-size:clamp(1.5rem,3.2vw,2.1rem);font-weight:800}.cs-card p{margin-top:10px;font-weight:600}
-.cs-card ul{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:9px}
-.cs-card li{display:flex;gap:12px;align-items:flex-start;font-weight:700}
-.cs-card li::before{content:"";flex:none;width:13px;height:13px;margin-top:6px;background:var(--yel);border:3px solid #000;transform:rotate(-8deg)}
-.c-y li::before{background:#000}
-.cs-btn{align-self:flex-start;margin-top:auto;padding:13px 22px;background:var(--yel);color:#000;border:3px solid #000;box-shadow:4px 4px 0 #000;font:800 .95rem var(--b);text-decoration:none;transition:transform .12s,box-shadow .12s}
-.c-y .cs-btn{background:#fff}.cs-btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 #000}.cs-btn:focus-visible{outline:4px solid var(--blue);outline-offset:3px}
-.cs-ctrl{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:34px}
-.cs-ctrl button{width:56px;height:56px;display:grid;place-items:center;background:var(--yel);color:#000;border:3px solid #000;box-shadow:5px 5px 0 #000;font:800 1.5rem var(--b);cursor:pointer;transition:transform .12s,box-shadow .12s}
-.cs-ctrl button:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 #000}.cs-ctrl button:focus-visible{outline:4px solid var(--blue);outline-offset:3px}
-.cs-count{min-width:70px;text-align:center;font:800 1.05rem var(--d);letter-spacing:-.03em}
-.cs-live{position:absolute;left:-9999px}.cp-note{margin-top:26px;color:var(--muted);font-weight:700;text-align:center}
-@media(max-width:520px){.cs{height:560px}.cs-card{padding:24px 22px;inset:0 30px 30px 0}.cs-card svg{width:60px;height:60px}.cs-n{font-size:2.2rem}}
-@media(prefers-reduced-motion:reduce){.cs-card,.cs-btn,.cs-ctrl button{transition:none!important}}
+.cp-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(160px,auto);gap:20px;margin-top:48px}
+.cp-t{display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:24px;border:3px solid var(--line);background:var(--panel);color:var(--ink);transition:transform .15s,box-shadow .15s}
+.cp-t:hover{transform:translate(-4px,-4px) rotate(-.6deg);box-shadow:8px 8px 0 var(--line)}
+.cp-t svg{width:52px;height:52px}.cp-t h3{font-size:1.15rem;font-weight:800}.cp-t p{margin:6px 0 0;font-weight:600;font-size:.95rem}
+.cp-big{grid-column:1/3;grid-row:1/3;padding:32px}.cp-big svg{width:88px;height:88px}.cp-big h3{font-size:clamp(1.6rem,3.4vw,2.4rem)}.cp-big p{font-size:1.05rem}
+.cp-w{grid-column:span 2}.cp-y{background:var(--yel);color:#000}.cp-b{background:var(--blue);color:#fff}.cp-k{background:#000;color:#fff}
+.cp-how{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}.cp-how div{border-top:4px solid var(--line);padding-top:18px}
+.cp-how b{display:block;font:800 1.2rem var(--d);letter-spacing:-.04em;margin-bottom:6px}.cp-how p{margin:0;color:var(--muted)}
+.cp-cta{display:flex;flex-wrap:wrap;align-items:center;gap:20px;margin-top:40px}
+.cp-btn{display:inline-block;padding:16px 28px;background:var(--blue);color:#fff;border:3px solid #000;box-shadow:5px 5px 0 #000;font:700 1rem var(--b);text-decoration:none;transition:transform .12s,box-shadow .12s}
+.cp-btn:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 #000}.cp-note{color:var(--muted);font-weight:700}
+@media(max-width:900px){.cp-grid{grid-template-columns:repeat(2,1fr);gap:14px}.cp-big{grid-column:1/-1;grid-row:auto}.cp-w{grid-column:1/-1}.cp-t{padding:18px}.cp-how{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.cp-t,.cp-btn{transition:none}.cp-t:hover{transform:none}}
 
 </style>
 </head>
@@ -525,26 +518,56 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
           <span class="tm-preview-sub">SPICES <i>+</i> FRESH PRODUCE</span>
           <span class="tm-preview-foot">DHARMAPURI · TAMIL NADU</span>
         </div>
-        <a class="cover" href="https://www.tmtradeline.in/" target="_blank" rel="noopener norefer<section id="college" aria-labelledby="college-title">
-  <div class="wrap">
-    <h2 id="college-title">College projects</h2>
-    <p class="cp-lead">Studying in Dharmapuri or anywhere in Tamil Nadu? Get guidance from a working web developer to plan, build and present your own project.</p>
-    <div class="cs" tabindex="0" role="group" aria-roledescription="card stack" aria-label="College project types. Use the left and right arrow keys, or swipe, to change the card.">
-      <article class="cs-card c-b" data-title="Final-year projects"><span class="cs-n" aria-hidden="true">01</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="miter" aria-hidden="true"><path d="M32 12L58 24L32 36L6 24ZM16 30V44C24 52 40 52 48 44V30M58 24V40"/></svg><h3>Final-year projects</h3><p>Turn your idea into a working project, with a mentor beside you at every step.</p><ul><li>Plan your idea and its features</li><li>Design and build it step by step</li><li>Prepare your report and demo</li></ul><a class="cs-btn" href="https://wa.me/919843176704?text=Hi%2C%20I%20am%20a%20college%20student%20and%20I%20need%20guidance%20for%20my%20final-year%20projects." target="_blank" rel="noopener noreferrer">Ask about this</a></article>
-      <article class="cs-card c-y" data-title="Mini projects"><span class="cs-n" aria-hidden="true">02</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M32 8C21 8 15 16 15 24C15 31 20 35 22 40H42C44 35 49 31 49 24C49 16 43 8 32 8ZM24 46H40M27 52H37"/></svg><h3>Mini projects</h3><p>Smaller projects that build real skills and finish quickly.</p><ul><li>Pick a small, clear idea</li><li>Learn the core web skills</li><li>Finish and present it with ease</li></ul><a class="cs-btn" href="https://wa.me/919843176704?text=Hi%2C%20I%20am%20a%20college%20student%20and%20I%20need%20guidance%20for%20my%20mini%20projects." target="_blank" rel="noopener noreferrer">Ask about this</a></article>
-      <article class="cs-card c-k" data-title="Website projects"><span class="cs-n" aria-hidden="true">03</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M8 12H56V52H8ZM8 24H56M16 18H18M24 18H26"/></svg><h3>Website projects</h3><p>Design and build a complete website you can show with pride.</p><ul><li>Plan the pages and layout</li><li>Build a site that works on phones</li><li>Put it online</li></ul><a class="cs-btn" href="https://wa.me/919843176704?text=Hi%2C%20I%20am%20a%20college%20student%20and%20I%20need%20guidance%20for%20my%20website%20projects." target="_blank" rel="noopener noreferrer">Ask about this</a></article>
-      <article class="cs-card c-b" data-title="E-commerce projects"><span class="cs-n" aria-hidden="true">04</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M14 22H50L54 54H10ZM22 28V18A10 10 0 0 1 42 18V28"/></svg><h3>E-commerce projects</h3><p>Build an online store where customers can browse and order.</p><ul><li>Product pages and categories</li><li>Cart and checkout steps</li><li>Making ordering simple</li></ul><a class="cs-btn" href="https://wa.me/919843176704?text=Hi%2C%20I%20am%20a%20college%20student%20and%20I%20need%20guidance%20for%20my%20e-commerce%20projects." target="_blank" rel="noopener noreferrer">Ask about this</a></article>
-      <article class="cs-card c-y" data-title="Web apps"><span class="cs-n" aria-hidden="true">05</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="miter" aria-hidden="true"><path d="M32 8L58 22L32 36L6 22ZM6 32L32 46L58 32M6 42L32 56L58 42"/></svg><h3>Web apps</h3><p>Dynamic projects where users log in and work with data.</p><ul><li>Logins and user accounts</li><li>Saving and showing data</li><li>Forms and dashboards</li></ul><a class="cs-btn" href="https://wa.me/919843176704?text=Hi%2C%20I%20am%20a%20college%20student%20and%20I%20need%20guidance%20for%20my%20web%20apps." target="_blank" rel="noopener noreferrer">Ask about this</a></article>
-      <article class="cs-card c-k" data-title="Portfolio sites"><span class="cs-n" aria-hidden="true">06</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><rect x="8" y="12" width="48" height="40"/><circle cx="21" cy="27" r="5"/><path d="M32 24H48M32 34H44M14 44H48"/></svg><h3>Portfolio sites</h3><p>A personal website that shows your own work online.</p><ul><li>Choose what to show</li><li>Design a clean personal site</li><li>Share it with employers</li></ul><a class="cs-btn" href="https://wa.me/919843176704?text=Hi%2C%20I%20am%20a%20college%20student%20and%20I%20need%20guidance%20for%20my%20portfolio%20sites." target="_blank" rel="noopener noreferrer">Ask about this</a></article>
-      <article class="cs-card c-b" data-title="Presentation and viva practice"><span class="cs-n" aria-hidden="true">07</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M8 10H56V40H8ZM32 40V54M20 54H44M18 32L26 22L34 28L46 16"/></svg><h3>Presentation and viva practice</h3><p>Learn how your project works so you can explain it with confidence.</p><ul><li>Understand how every part works</li><li>Practise likely questions</li><li>Explain your project clearly</li></ul><a class="cs-btn" href="https://wa.me/919843176704?text=Hi%2C%20I%20am%20a%20college%20student%20and%20I%20need%20guidance%20for%20my%20presentation%20and%20viva%20practice." target="_blank" rel="noopener noreferrer">Ask about this</a></article>
-    </div>
-    <div class="cs-ctrl"><button class="cs-prev" type="button" aria-label="Previous card">&larr;</button><span class="cs-count" aria-hidden="true">1 / 7</span><button class="cs-next" type="button" aria-label="Next card">&rarr;</button></div>
-    <p class="cs-live" aria-live="polite"></p>
-    <p class="cp-note">Swipe the card, or tap the arrows. Not sure which fits? Message us on WhatsApp with your course and topic.</p>
+        <a class="cover" href="https://www.tmtradeline.in/" target="_blank" rel="noopener noreferrer" aria-label="Visit the TM International Tradeline website"></a>
+        <span class="domain">tmtradeline.in</span>
+      </div>
+      <div class="info">
+        <p class="tag">Business website · Export trade</p>
+        <h3>TM International Tradeline</h3>
+        <p>A product-led website for an Indian exporter of spices and fresh produce, with catalogue and B2B enquiry sections.</p>
+        <a class="btn" href="https://www.tmtradeline.in/" target="_blank" rel="noopener noreferrer">Visit website</a>
+        <a class="case-link" href="/projects/tm-international-tradeline/">Read project case study <span aria-hidden="true">→</span></a>
+      </div>
+      </article>
   </div>
 </section>
 
-a</b><p>Tell us your course and your topic, or we help you pick one.</p></div>
+<section id="college" aria-labelledby="college-title">
+  <div class="wrap">
+    <h2 id="college-title">College projects</h2>
+    <p class="cp-lead">Studying in Dharmapuri or anywhere in Tamil Nadu? Get guidance from a working web developer to plan, build and present your own project.</p>
+    <div class="cp-grid">
+      <article class="cp-t cp-big cp-b">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="miter" aria-hidden="true"><path d="M32 12L58 24L32 36L6 24ZM16 30V44C24 52 40 52 48 44V30M58 24V40"/></svg>
+        <div><h3>Final-year projects</h3><p>Turn your idea into a working project, with a mentor beside you at every step.</p></div>
+      </article>
+      <article class="cp-t cp-y">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M32 8C21 8 15 16 15 24C15 31 20 35 22 40H42C44 35 49 31 49 24C49 16 43 8 32 8ZM24 46H40M27 52H37"/></svg>
+        <div><h3>Mini projects</h3><p>Smaller projects that build real skills.</p></div>
+      </article>
+      <article class="cp-t">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M8 12H56V52H8ZM8 24H56M16 18H18M24 18H26"/></svg>
+        <div><h3>Website projects</h3><p>Design and build a complete website.</p></div>
+      </article>
+      <article class="cp-t cp-w cp-k">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M14 22H50L54 54H10ZM22 28V18A10 10 0 0 1 42 18V28"/></svg>
+        <div><h3>E-commerce projects</h3><p>Product pages, cart and checkout, built step by step.</p></div>
+      </article>
+      <article class="cp-t">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="miter" aria-hidden="true"><path d="M32 8L58 22L32 36L6 22ZM6 32L32 46L58 32M6 42L32 56L58 42"/></svg>
+        <div><h3>Web apps</h3><p>Dynamic projects with logins and data.</p></div>
+      </article>
+      <article class="cp-t cp-y">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><rect x="8" y="12" width="48" height="40"/><circle cx="21" cy="27" r="5"/><path d="M32 24H48M32 34H44M14 44H48"/></svg>
+        <div><h3>Portfolio sites</h3><p>Show your own work online.</p></div>
+      </article>
+      <article class="cp-t cp-w cp-b">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M8 10H56V40H8ZM32 40V54M20 54H44M18 32L26 22L34 28L46 16"/></svg>
+        <div><h3>Presentation and viva practice</h3><p>Learn how your project works so you can explain it with confidence.</p></div>
+      </article>
+    </div>
+    <div class="cp-how">
+      <div><b>1. Choose your idea</b><p>Tell us your course and your topic, or we help you pick one.</p></div>
       <div><b>2. Build with guidance</b><p>We teach you the design and code, and you build your own project.</p></div>
       <div><b>3. Present with confidence</b><p>You understand every part, so you can answer questions about it.</p></div>
     </div>
@@ -966,80 +989,6 @@ document.querySelectorAll('.shot').forEach(function (shot) {
     });
   },{threshold:0.18});
   observer.observe(section);
-})();
-</script>
-<script>
-(function () {
-  var stack = document.querySelector('.cs'); if (!stack) return;
-  var cards = [].slice.call(stack.querySelectorAll('.cs-card')), n = cards.length;
-  var order = cards.map(function (_, i) { return i; });
-  var count = stack.parentElement.querySelector('.cs-count'), live = stack.parentElement.querySelector('.cs-live');
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var busy = false;
-  var POS = ['translate(0,0) rotate(0deg) scale(1)', 'translate(18px,18px) rotate(2.2deg) scale(.97)', 'translate(34px,34px) rotate(-2deg) scale(.94)'];
-  var BACK = 'translate(34px,34px) rotate(0deg) scale(.9)';
-  function render(skip) {
-    order.forEach(function (idx, k) {
-      var card = cards[idx];
-      if (skip === card) card.style.transition = 'none';
-      card.style.transform = k < 3 ? POS[k] : BACK;
-      card.style.opacity = k < 3 ? 1 : 0;
-      card.style.zIndex = n - k;
-      card.style.pointerEvents = k === 0 ? 'auto' : 'none';
-      card.setAttribute('aria-hidden', k === 0 ? 'false' : 'true');
-      var link = card.querySelector('a'); if (link) link.tabIndex = k === 0 ? 0 : -1;
-    });
-    if (skip) { void skip.offsetWidth; skip.style.transition = ''; }
-    var top = cards[order[0]];
-    count.textContent = (order[0] + 1) + ' / ' + n;
-    live.textContent = top.getAttribute('data-title') + ', ' + (order[0] + 1) + ' of ' + n;
-  }
-  function next(dir) {
-    if (busy) return;
-    var card = cards[order[0]];
-    if (reduce) { order.push(order.shift()); render(); return; }
-    busy = true; dir = dir || -1;
-    card.style.transition = 'transform .45s cubic-bezier(.5,0,.8,.4),opacity .45s';
-    card.style.transform = 'translate(' + (dir * 130) + '%,0) rotate(' + (dir * 22) + 'deg) skewX(' + (-dir * 14) + 'deg)';
-    card.style.opacity = 0;
-    setTimeout(function () { order.push(order.shift()); card.style.transition = ''; render(card); busy = false; }, 460);
-  }
-  function prev() {
-    if (busy) return;
-    var card = cards[order[n - 1]];
-    order.unshift(order.pop());
-    if (reduce) { render(); return; }
-    busy = true; card.style.transition = 'none';
-    card.style.transform = 'translate(-130%,0) rotate(-22deg) skewX(14deg)';
-    card.style.opacity = 0; void card.offsetWidth; card.style.transition = '';
-    render(); setTimeout(function () { busy = false; }, 650);
-  }
-  var sx = 0, dx = 0, drag = false;
-  stack.addEventListener('pointerdown', function (e) {
-    var card = cards[order[0]];
-    if (busy || !card.contains(e.target) || e.target.closest('a,button')) return;
-    drag = true; sx = e.clientX; dx = 0; card.style.transition = 'none';
-    try { stack.setPointerCapture(e.pointerId); } catch (x) {}
-  });
-  stack.addEventListener('pointermove', function (e) {
-    if (!drag) return;
-    dx = e.clientX - sx;
-    cards[order[0]].style.transform = 'translate(' + dx + 'px,0) rotate(' + (dx * 0.06) + 'deg)';
-  });
-  function endDrag() {
-    if (!drag) return; drag = false;
-    var card = cards[order[0]]; card.style.transition = '';
-    if (Math.abs(dx) > 90) next(dx > 0 ? 1 : -1); else card.style.transform = POS[0];
-    dx = 0;
-  }
-  stack.addEventListener('pointerup', endDrag); stack.addEventListener('pointercancel', endDrag);
-  stack.parentElement.querySelector('.cs-next').addEventListener('click', function () { next(-1); });
-  stack.parentElement.querySelector('.cs-prev').addEventListener('click', prev);
-  stack.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowRight') { e.preventDefault(); next(-1); }
-    else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
-  });
-  render();
 })();
 </script>
 </body>
