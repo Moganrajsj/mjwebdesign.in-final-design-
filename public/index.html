@@ -352,6 +352,23 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
 }
 @media (max-width:520px){.steps{grid-template-columns:1fr}.steps li{border-right:0;border-bottom:3px solid #000}.steps li:last-child{border-bottom:0}.ft .cols{grid-template-columns:1fr}.ft .enquire .row2{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+
+/* College projects section */
+.cp-lead{color:var(--muted);margin-top:14px;max-width:52ch}
+.cp-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(160px,auto);gap:20px;margin-top:48px}
+.cp-t{display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:24px;border:3px solid var(--line);background:var(--panel);color:var(--ink);transition:transform .15s,box-shadow .15s}
+.cp-t:hover{transform:translate(-4px,-4px) rotate(-.6deg);box-shadow:8px 8px 0 var(--line)}
+.cp-t svg{width:52px;height:52px}.cp-t h3{font-size:1.15rem;font-weight:800}.cp-t p{margin:6px 0 0;font-weight:600;font-size:.95rem}
+.cp-big{grid-column:1/3;grid-row:1/3;padding:32px}.cp-big svg{width:88px;height:88px}.cp-big h3{font-size:clamp(1.6rem,3.4vw,2.4rem)}.cp-big p{font-size:1.05rem}
+.cp-w{grid-column:span 2}.cp-y{background:var(--yel);color:#000}.cp-b{background:var(--blue);color:#fff}.cp-k{background:#000;color:#fff}
+.cp-how{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}.cp-how div{border-top:4px solid var(--line);padding-top:18px}
+.cp-how b{display:block;font:800 1.2rem var(--d);letter-spacing:-.04em;margin-bottom:6px}.cp-how p{margin:0;color:var(--muted)}
+.cp-cta{display:flex;flex-wrap:wrap;align-items:center;gap:20px;margin-top:40px}
+.cp-btn{display:inline-block;padding:16px 28px;background:var(--blue);color:#fff;border:3px solid #000;box-shadow:5px 5px 0 #000;font:700 1rem var(--b);text-decoration:none;transition:transform .12s,box-shadow .12s}
+.cp-btn:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 #000}.cp-note{color:var(--muted);font-weight:700}
+@media(max-width:900px){.cp-grid{grid-template-columns:repeat(2,1fr);gap:14px}.cp-big{grid-column:1/-1;grid-row:auto}.cp-w{grid-column:1/-1}.cp-t{padding:18px}.cp-how{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.cp-t,.cp-btn{transition:none}.cp-t:hover{transform:none}}
+
 </style>
 </head>
 <body>
@@ -512,6 +529,52 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
         <a class="case-link" href="/projects/tm-international-tradeline/">Read project case study <span aria-hidden="true">→</span></a>
       </div>
       </article>
+  </div>
+</section>
+
+<section id="college" aria-labelledby="college-title">
+  <div class="wrap">
+    <h2 id="college-title">College projects</h2>
+    <p class="cp-lead">Studying in Dharmapuri or anywhere in Tamil Nadu? Get guidance from a working web developer to plan, build and present your own project.</p>
+    <div class="cp-grid">
+      <article class="cp-t cp-big cp-b">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="miter" aria-hidden="true"><path d="M32 12L58 24L32 36L6 24ZM16 30V44C24 52 40 52 48 44V30M58 24V40"/></svg>
+        <div><h3>Final-year projects</h3><p>Turn your idea into a working project, with a mentor beside you at every step.</p></div>
+      </article>
+      <article class="cp-t cp-y">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M32 8C21 8 15 16 15 24C15 31 20 35 22 40H42C44 35 49 31 49 24C49 16 43 8 32 8ZM24 46H40M27 52H37"/></svg>
+        <div><h3>Mini projects</h3><p>Smaller projects that build real skills.</p></div>
+      </article>
+      <article class="cp-t">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M8 12H56V52H8ZM8 24H56M16 18H18M24 18H26"/></svg>
+        <div><h3>Website projects</h3><p>Design and build a complete website.</p></div>
+      </article>
+      <article class="cp-t cp-w cp-k">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M14 22H50L54 54H10ZM22 28V18A10 10 0 0 1 42 18V28"/></svg>
+        <div><h3>E-commerce projects</h3><p>Product pages, cart and checkout, built step by step.</p></div>
+      </article>
+      <article class="cp-t">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="miter" aria-hidden="true"><path d="M32 8L58 22L32 36L6 22ZM6 32L32 46L58 32M6 42L32 56L58 42"/></svg>
+        <div><h3>Web apps</h3><p>Dynamic projects with logins and data.</p></div>
+      </article>
+      <article class="cp-t cp-y">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><rect x="8" y="12" width="48" height="40"/><circle cx="21" cy="27" r="5"/><path d="M32 24H48M32 34H44M14 44H48"/></svg>
+        <div><h3>Portfolio sites</h3><p>Show your own work online.</p></div>
+      </article>
+      <article class="cp-t cp-w cp-b">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M8 10H56V40H8ZM32 40V54M20 54H44M18 32L26 22L34 28L46 16"/></svg>
+        <div><h3>Presentation and viva practice</h3><p>Learn how your project works so you can explain it with confidence.</p></div>
+      </article>
+    </div>
+    <div class="cp-how">
+      <div><b>1. Choose your idea</b><p>Tell us your course and your topic, or we help you pick one.</p></div>
+      <div><b>2. Build with guidance</b><p>We teach you the design and code, and you build your own project.</p></div>
+      <div><b>3. Present with confidence</b><p>You understand every part, so you can answer questions about it.</p></div>
+    </div>
+    <div class="cp-cta">
+      <a class="cp-btn" href="https://wa.me/919843176704?text=Hi%2C%20I%20am%20a%20college%20student%20and%20I%20need%20guidance%20for%20my%20project." target="_blank" rel="noopener noreferrer">Ask about your project</a>
+      <span class="cp-note">Message us on WhatsApp with your course and topic.</span>
+    </div>
   </div>
 </section>
 
