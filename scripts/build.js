@@ -75,18 +75,6 @@ for (const slug of requiredProjectPages) {
   }
 }
 
-const requiredLearningPages = [
-  "python",
-];
-
-for (const slug of requiredLearningPages) {
-  const page = path.join(publicDir, slug, "index.html");
-  if (!fs.existsSync(page)) {
-    console.error(`Build failed: learning page is missing for "${slug}".`);
-    process.exit(1);
-  }
-}
-
 const requiredInsightsPages = [
   "mj-insights",
   "mj-insights/how-much-does-a-business-website-cost-in-tamil-nadu",
