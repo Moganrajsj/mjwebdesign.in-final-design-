@@ -384,6 +384,33 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
 @media (max-width:520px){.cs{height:560px}.cs-card{padding:24px 22px;inset:0 30px 30px 0}.cs-card svg{width:60px;height:60px}.cs-n{font-size:2.2rem}}
 @media (prefers-reduced-motion:reduce){.cs-card,.cs-btn,.cs-ctrl button{transition:none!important}}
 
+
+/* MJ winter snowfall — decorative, non-interactive and reduced-motion aware */
+body::after{
+  content:"";
+  position:fixed;
+  inset:-100vh 0 0;
+  z-index:1000;
+  pointer-events:none;
+  opacity:.62;
+  background-image:
+    radial-gradient(circle at 34px 44px,rgba(255,255,255,.96) 0 1.4px,transparent 2px),
+    radial-gradient(circle at 92px 118px,rgba(31,59,255,.42) 0 1.25px,transparent 2px),
+    radial-gradient(circle at 145px 72px,rgba(255,255,255,.9) 0 1.8px,transparent 2.5px),
+    radial-gradient(circle at 70px 190px,rgba(31,59,255,.32) 0 1.1px,transparent 1.9px);
+  background-size:180px 180px,260px 260px,340px 340px,440px 440px;
+  animation:mj-snowfall 22s linear infinite;
+}
+@keyframes mj-snowfall{
+  0%{background-position:0 -10vh,0 -20vh,0 -5vh,0 -30vh}
+  100%{background-position:45px 110vh,-55px 110vh,35px 110vh,-35px 110vh}
+}
+@media(max-width:700px){
+  body::after{opacity:.48;background-size:220px 220px,300px 300px,390px 390px,500px 500px;animation-duration:28s}
+}
+@media(prefers-reduced-motion:reduce){
+  body::after{animation:none;background-position:0 0,0 20px,0 60px,0 100px}
+}
 </style>
 </head>
 <body>
