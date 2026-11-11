@@ -411,6 +411,32 @@ body::after{
 @media(prefers-reduced-motion:reduce){
   body::after{animation:none;background-position:0 0,0 20px,0 60px,0 100px}
 }
+
+/* MJ homepage: icy glaze on project cards, feature cards and primary actions */
+.cs-card{
+  background-image:linear-gradient(145deg,rgba(255,255,255,.34) 0%,rgba(198,225,255,.18) 45%,rgba(255,255,255,.08) 72%,rgba(255,255,255,.26) 100%);
+  background-blend-mode:screen;
+  box-shadow:8px 8px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.88),inset 0 0 0 1px rgba(195,225,255,.72),inset 0 -12px 26px rgba(135,184,235,.14);
+}
+.btn,.ft .btn,.cs-ctrl button{
+  position:relative;
+  border-color:#080808;
+  background-image:linear-gradient(135deg,rgba(255,255,255,.42) 0%,rgba(205,230,255,.2) 45%,rgba(255,255,255,.05) 72%,rgba(255,255,255,.28) 100%);
+  background-blend-mode:screen;
+  box-shadow:5px 5px 0 #000,inset 0 1px 0 rgba(255,255,255,.82),inset 0 0 0 1px rgba(196,225,255,.7);
+}
+.btn.blue,.ft .btn{
+  background-color:var(--blue);
+  background-image:linear-gradient(135deg,rgba(255,255,255,.32),rgba(190,220,255,.15) 48%,rgba(255,255,255,.05));
+}
+.cs-ctrl button{
+  background-color:var(--yel);
+  background-image:linear-gradient(135deg,rgba(255,255,255,.48),rgba(205,230,255,.24) 48%,rgba(255,255,255,.06));
+}
+.btn:hover,.ft .btn:hover,.cs-ctrl button:hover{
+  box-shadow:2px 2px 0 #000,inset 0 1px 0 rgba(255,255,255,.88),inset 0 0 0 1px rgba(196,225,255,.72);
+}
+
 </style>
 </head>
 <body>
