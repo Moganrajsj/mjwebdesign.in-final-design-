@@ -30,3 +30,21 @@
 .case-preview{margin:30px 0 36px;max-width:900px;border:3px solid var(--line);background:#fff;box-shadow:8px 8px 0 var(--line);overflow:hidden}
 .case-preview img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:top}
 .case-preview figcaption{padding:12px 16px;border-top:3px solid var(--line);font-size:.82rem;color:#55556a;font-weight:700}
+
+
+/* Frosted edge finish for project case-study cards */
+.case-tile{
+  background-image:linear-gradient(145deg,rgba(255,255,255,.96) 0%,rgba(225,240,255,.78) 48%,rgba(197,222,250,.38) 100%);
+  box-shadow:6px 6px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.98),inset 0 0 0 1px rgba(166,205,243,.58),inset 0 -10px 24px rgba(143,190,235,.12);
+}
+.case-hero .case-actions .button,
+.case-body .button{
+  background-image:linear-gradient(135deg,rgba(255,255,255,.96) 0%,rgba(225,240,255,.86) 48%,rgba(185,216,249,.48) 100%);
+  box-shadow:5px 5px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.98),inset 0 0 0 1px rgba(166,205,243,.6);
+}
+.case-hero .case-actions .button.primary,
+.case-body .button.primary{
+  background-color:var(--blue);
+  background-image:linear-gradient(135deg,rgba(255,255,255,.32),rgba(185,218,255,.18) 48%,rgba(255,255,255,.04));
+  color:#fff;
+}
