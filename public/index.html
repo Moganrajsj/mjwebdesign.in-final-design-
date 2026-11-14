@@ -3,9 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
 <!-- Search engine metadata -->
 <meta name="description" content="MJ WEB DESIGNS is a website designing and development company in Dharmapuri, creating business websites, e-commerce stores, SEO-ready websites and digital experiences for businesses across Tamil Nadu.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -257,26 +256,23 @@ h2{font-size:clamp(1.9rem,4.6vw,3.4rem);font-weight:800}
 .why{padding:28px;background:var(--panel);border-left:10px solid var(--blue)}
 .why h3{font-size:1.25rem;margin-bottom:10px}.why p{color:var(--muted)}
 
-/* process: scroll-activated vertical timeline */
+/* process: animated horizontal sequence */
 .process{background:var(--yel);color:#000;overflow:hidden}
-.process h2{margin-bottom:44px;transform-origin:left center}
-.mj-timeline{position:relative;max-width:900px;padding-left:64px;margin:0 auto}
-.mj-timeline .line{position:absolute;left:14px;top:8px;bottom:8px;width:6px;background:var(--panel);border:2px solid var(--line)}
-.mj-timeline .line i{position:absolute;left:0;right:0;top:0;height:100%;background:var(--blue);transform:scaleY(var(--p,0));transform-origin:top}
-.mj-timeline ol{list-style:none;margin:0;padding:0;display:grid;gap:40px}
-.mj-timeline li{position:relative;min-height:54px}
-.mj-timeline li::before{content:"";position:absolute;left:-60px;top:2px;width:26px;height:26px;background:var(--bg);border:3px solid var(--line);transition:background .3s,transform .4s cubic-bezier(.2,.9,.3,1.5)}
-.mj-timeline li.on::before{background:#E53935;border-color:#000;transform:rotate(-8deg) scale(1.15)}
-.mj-timeline h3{font-size:1.35rem;margin-bottom:6px}
-.mj-timeline p{color:#333;max-width:68ch}
-@media(max-width:600px){
-  .process h2{margin-bottom:36px}
-  .mj-timeline{padding-left:58px}
-  .mj-timeline .line{left:12px}
-  .mj-timeline li::before{left:-54px}
-  .mj-timeline ol{gap:34px}
-}
-@media(prefers-reduced-motion:reduce){.mj-timeline li::before{transition:none}}
+.process h2{transform-origin:left center}
+.steps{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);counter-reset:s;border:3px solid #000;background:#fff}
+.steps li{counter-increment:s;padding:26px 22px 30px;border-right:3px solid #000;position:relative;transition:background .25s,transform .25s,box-shadow .25s}
+.steps li:last-child{border-right:0}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;background:#000;color:var(--yel);font:800 1.2rem var(--d);margin-bottom:18px;transition:transform .35s cubic-bezier(.2,.8,.2,1),background .25s,color .25s}
+.steps li:hover{background:#f1f2ff;transform:translateY(-5px);box-shadow:inset 0 -6px 0 var(--blue)}
+.steps li:hover::before{transform:rotate(12deg) scale(1.08);background:var(--blue);color:#fff}
+.steps h3{font-size:1.25rem;margin-bottom:8px}.steps p{color:#333}
+.process.reveal-ready h2,.process.reveal-ready .steps li{opacity:0;transform:translateY(34px)}
+.process.reveal-ready.is-visible h2,.process.reveal-ready.is-visible .steps li{opacity:1;transform:translateY(0);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.75,.25,1)}
+.process.reveal-ready.is-visible .steps li:nth-child(1){transition-delay:.12s}
+.process.reveal-ready.is-visible .steps li:nth-child(2){transition-delay:.25s}
+.process.reveal-ready.is-visible .steps li:nth-child(3){transition-delay:.38s}
+.process.reveal-ready.is-visible .steps li:nth-child(4){transition-delay:.51s}
+@media(prefers-reduced-motion:reduce){.process.reveal-ready h2,.process.reveal-ready .steps li{opacity:1;transform:none}.steps li,.steps li::before{transition:none!important}}
 
 /* testimonials: stacked offset cards */
 .qs{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:52px}
@@ -347,13 +343,14 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
   .shot{border-right:0;border-bottom:3px solid #000}
   .faqs{grid-template-columns:1fr;gap:36px}
   .faqs details p{padding-right:0}
-
+  .steps{grid-template-columns:1fr 1fr}
+  .steps li:nth-child(2){border-right:0}.steps li:nth-child(-n+2){border-bottom:3px solid #000}
   blockquote:nth-child(2){transform:none}
   .ft .cta{grid-template-columns:1fr;gap:36px;padding:56px 0 48px}
   .ft .cols{grid-template-columns:1fr 1fr}
   .ft .brand-col{grid-column:1/-1}
 }
-@media (max-width:520px){.ft .cols{grid-template-columns:1fr}.ft .enquire .row2{grid-template-columns:1fr}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}.steps li{border-right:0;border-bottom:3px solid #000}.steps li:last-child{border-bottom:0}.ft .cols{grid-template-columns:1fr}.ft .enquire .row2{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
 
 /* College projects section: swipeable card stack */
@@ -440,140 +437,6 @@ body::after{
   box-shadow:2px 2px 0 #000,inset 0 1px 0 rgba(255,255,255,.88),inset 0 0 0 1px rgba(196,225,255,.72);
 }
 
-
-
-/* selected projects: premium responsive showcase cards */
-.work .wrap{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  column-gap:32px;
-  row-gap:36px;
-}
-.work .wrap > h2{
-  grid-column:1/-1;
-  margin:0 0 8px;
-}
-.work .proj{
-  display:flex;
-  flex-direction:column;
-  min-width:0;
-  margin:0;
-  overflow:hidden;
-  border:3px solid #000;
-  background:#fff;
-  color:#000;
-  box-shadow:8px 8px 0 #000;
-  transition:transform .22s ease,box-shadow .22s ease;
-}
-.work .proj:hover{
-  transform:translateY(-6px);
-  box-shadow:12px 12px 0 var(--yel);
-}
-.work .proj:nth-of-type(even) .shot{
-  order:0;
-  border-left:0;
-  border-right:0;
-}
-.work .shot{
-  flex:none;
-  aspect-ratio:16/10;
-  border:0;
-  border-bottom:3px solid #000;
-  background:#111;
-}
-.work .shot img{
-  transition:transform .55s cubic-bezier(.2,.8,.2,1);
-}
-.work .proj:hover .shot img{
-  transform:scale(1.035);
-}
-.work .shot .domain{
-  left:16px;
-  bottom:16px;
-  padding:7px 11px;
-  border:2px solid #fff;
-  background:#000;
-  color:var(--yel);
-  box-shadow:3px 3px 0 #000;
-  font:800 .72rem var(--d);
-  letter-spacing:.02em;
-}
-.work .info{
-  display:flex;
-  flex:1;
-  align-items:flex-start;
-  justify-content:flex-start;
-  gap:13px;
-  padding:clamp(22px,3vw,32px);
-}
-.work .info .tag{
-  display:inline-flex;
-  align-items:center;
-  width:fit-content;
-  max-width:100%;
-  padding:6px 10px;
-  border-left:4px solid var(--blue);
-  background:var(--panel);
-  color:var(--blue);
-  font-size:.76rem;
-  font-weight:800;
-  line-height:1.35;
-  letter-spacing:.04em;
-  text-transform:uppercase;
-}
-.work .info h3{
-  font-size:clamp(1.35rem,2.2vw,1.85rem);
-  line-height:1.12;
-  letter-spacing:-.04em;
-}
-.work .info > p:not(.tag){
-  color:#4A4A66;
-  font-size:.98rem;
-  line-height:1.65;
-}
-.work .info .btn{
-  align-self:flex-start;
-  margin-top:6px;
-  padding:12px 20px;
-  background:var(--blue);
-  color:#fff;
-  border:3px solid #000;
-  box-shadow:4px 4px 0 #000;
-  font-size:.92rem;
-}
-.work .info .btn:hover{
-  transform:translate(3px,3px);
-  box-shadow:1px 1px 0 #000;
-}
-.work .case-link{
-  margin-top:3px;
-  color:#1F3BFF;
-  font-size:.92rem;
-}
-.work .case-link:hover{
-  text-decoration-thickness:3px;
-}
-.work .proj:last-of-type{
-  grid-column:1/-1;
-  justify-self:center;
-  width:min(100%,calc(50% - 16px));
-}
-@media(max-width:760px){
-  .work .wrap{
-    grid-template-columns:minmax(0,1fr);
-    row-gap:26px;
-  }
-  .work .wrap > h2{grid-column:auto}
-  .work .proj:last-of-type{
-    grid-column:auto;
-    width:100%;
-  }
-  .work .info{padding:24px}
-}
-@media(prefers-reduced-motion:reduce){
-  .work .proj,.work .shot img{transition:none}
-  .work .proj:hover,.work .proj:hover .shot img{transform:none}
-}
 </style>
 </head>
 <body>
@@ -892,15 +755,12 @@ body::after{
 <section class="process" id="process">
   <div class="wrap">
     <h2>Our creative process</h2>
-    <div class="mj-timeline" data-timeline>
-      <div class="line" aria-hidden="true"><i></i></div>
-      <ol aria-label="Our website project process">
-        <li><h3>Discover</h3><p>We learn about your business, customers and goals.</p></li>
-        <li><h3>Design</h3><p>Wireframes and visuals for you to review and change.</p></li>
-        <li><h3>Develop</h3><p>We build, test and refine the site on every device.</p></li>
-        <li><h3>Launch</h3><p>We go live, then track results and keep improving.</p></li>
-      </ol>
-    </div>
+    <ol class="steps">
+      <li><h3>Discover</h3><p>We learn about your business, customers and goals.</p></li>
+      <li><h3>Design</h3><p>Wireframes and visuals for you to review and change.</p></li>
+      <li><h3>Develop</h3><p>We build, test and refine the site on every device.</p></li>
+      <li><h3>Launch</h3><p>We go live, then track results and keep improving.</p></li>
+    </ol>
   </div>
 </section>
 
@@ -1218,27 +1078,20 @@ document.querySelectorAll('.shot').forEach(function (shot) {
 </script>
 
 
-<!-- scroll progress for the creative process timeline -->
+<!-- reveal the creative process as it enters the viewport -->
 <script>
-(function () {
-  var timelines = [].slice.call(document.querySelectorAll('[data-timeline]'));
-  if (!timelines.length) return;
-
-  function update() {
-    var mid = window.innerHeight * 0.55;
-    timelines.forEach(function (t) {
-      var r = t.getBoundingClientRect();
-      var p = Math.max(0, Math.min(1, (mid - r.top) / r.height));
-      t.style.setProperty('--p', p);
-      [].slice.call(t.querySelectorAll('li')).forEach(function (li) {
-        li.classList.toggle('on', li.getBoundingClientRect().top < mid);
-      });
+(function(){
+  var section=document.querySelector('.process');
+  if(!section) return;
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(!('IntersectionObserver' in window)){section.classList.add('is-visible');return;}
+  section.classList.add('reveal-ready');
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){section.classList.add('is-visible');observer.disconnect();}
     });
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
-  update();
+  },{threshold:0.18});
+  observer.observe(section);
 })();
 </script>
 
