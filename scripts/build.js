@@ -24,9 +24,9 @@ for (const slug of requiredLegalPages) {
   }
 }
 
-const favicon = path.join(publicDir, "favicon.png");
+const favicon = path.join(publicDir, "favicon.ico");
 if (!fs.existsSync(favicon)) {
-  console.error("Build failed: public/favicon.png is missing.");
+  console.error("Build failed: public/favicon.ico is missing.");
   process.exit(1);
 }
 
