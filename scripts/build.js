@@ -1,5 +1,4 @@
 // Static site: everything Vercel should serve already lives in public/.
-// This check makes the build fail loudly instead of deploying a 404.
 const fs = require("fs");
 const path = require("path");
 
@@ -11,15 +10,11 @@ if (!fs.existsSync(index)) {
   process.exit(1);
 }
 
-const requiredLegalPages = [
-  "privacy-policy",
-  "about-us",
-];
-
+const requiredLegalPages = ["privacy-policy", "about-us"];
 for (const slug of requiredLegalPages) {
   const page = path.join(publicDir, slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: legal page is missing for "${slug}".`);
+    console.error(\`Build failed: legal page is missing for "\${slug}".\`);
     process.exit(1);
   }
 }
@@ -41,47 +36,29 @@ if (!/<meta\s+name=["']robots["']\s+content=["']noindex,\s*follow["']/i.test(not
   process.exit(1);
 }
 
-const requiredLocationPages = [
-  "website-design-company-tamil-nadu",
-];
-
+const requiredLocationPages = ["website-design-company-tamil-nadu"];
 for (const slug of requiredLocationPages) {
   const page = path.join(publicDir, slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: location landing page is missing for "${slug}".`);
+    console.error(\`Build failed: location landing page is missing for "\${slug}".\`);
     process.exit(1);
   }
 }
 
-const requiredServicePages = [
-  "website-design",
-  "ecommerce",
-  "brand-identity",
-  "creative-design",
-  "brand-films",
-  "seo-digital-marketing",
-];
-
+const requiredServicePages = ["website-design", "ecommerce", "brand-identity", "creative-design", "brand-films", "seo-digital-marketing"];
 for (const slug of requiredServicePages) {
   const page = path.join(publicDir, "services", slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: service page is missing for "${slug}".`);
+    console.error(\`Build failed: service page is missing for "\${slug}".\`);
     process.exit(1);
   }
 }
 
-const requiredProjectPages = [
-  "sriram-broadband",
-  "ayli-womens-fashion",
-  "spidy-clothing",
-  "ugan-foods",
-  "tm-international-tradeline",
-];
-
+const requiredProjectPages = ["sriram-broadband", "ayli-womens-fashion", "spidy-clothing", "ugan-foods", "tm-international-tradeline"];
 for (const slug of requiredProjectPages) {
   const page = path.join(publicDir, "projects", slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: project case study is missing for "${slug}".`);
+    console.error(\`Build failed: project case study is missing for "\${slug}".\`);
     process.exit(1);
   }
 }
@@ -92,13 +69,12 @@ const requiredInsightsPages = [
   "mj-insights/why-every-small-business-needs-a-website",
   "mj-insights/website-vs-instagram-which-is-better-for-your-business",
   "mj-insights/7-important-features-every-business-website-should-have",
-  "mj-insights/how-to-start-an-online-store-in-tamil-nadu",
+  "mj-insights/how-to-start-an-online-store-in-tamil-nadu"
 ];
-
 for (const slug of requiredInsightsPages) {
   const page = path.join(publicDir, slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: insights page is missing for "${slug}".`);
+    console.error(\`Build failed: insights page is missing for "\${slug}".\`);
     process.exit(1);
   }
 }
@@ -109,13 +85,12 @@ const requiredNewInsights = [
   "mj-insights/local-seo-guide-small-businesses-tamil-nadu",
   "mj-insights/google-business-profile-complete-beginners-guide",
   "mj-insights/why-website-not-showing-on-google",
-  "mj-insights/how-to-submit-website-to-google-search-console",
+  "mj-insights/how-to-submit-website-to-google-search-console"
 ];
-
 for (const slug of requiredNewInsights) {
   const page = path.join(publicDir, slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: new insights page is missing for "${slug}".`);
+    console.error(\`Build failed: new insights page is missing for "\${slug}".\`);
     process.exit(1);
   }
 }
@@ -127,13 +102,12 @@ const requiredModelLaunchInsights = [
   "mj-insights/mistral-large-4-open-weight-model",
   "mj-insights/liquid-ai-lfm3-1-7b-model",
   "mj-insights/ricursive-ripple-65b-preview-model",
-  "mj-insights/nvidia-nemotron-3-5-transcribe-model",
+  "mj-insights/nvidia-nemotron-3-5-transcribe-model"
 ];
-
 for (const slug of requiredModelLaunchInsights) {
   const page = path.join(publicDir, slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: model launch insight is missing for "${slug}".`);
+    console.error(\`Build failed: model launch insight is missing for "\${slug}".\`);
     process.exit(1);
   }
 }
@@ -148,17 +122,41 @@ const requiredAiInsights = [
   "mj-insights/ai-model-releases-monthly-roundup-november-2026",
   "mj-insights/what-is-an-llm-context-window",
   "mj-insights/ai-image-generation-vs-ai-video-generation",
-  "mj-insights/how-to-run-ai-models-locally-on-your-laptop",
+  "mj-insights/how-to-run-ai-models-locally-on-your-laptop"
 ];
-
 for (const slug of requiredAiInsights) {
   const page = path.join(publicDir, slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: AI insights page is missing for "${slug}".`);
+    console.error(\`Build failed: AI insights page is missing for "\${slug}".\`);
     process.exit(1);
   }
 }
 
+/* Verify the shared RED chatbot assets and their references on every live HTML page. */
+for (const asset of ["mj-red-chatbot.css", "mj-red-chatbot.js"]) {
+  if (!fs.existsSync(path.join(publicDir, asset))) {
+    console.error(\`Build failed: public/\${asset} is missing.\`);
+    process.exit(1);
+  }
+}
+function collectHtml(directory, collected) {
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const fullPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) collectHtml(fullPath, collected);
+    else if (entry.isFile() && entry.name.toLowerCase().endsWith(".html") && entry.name !== "MJ web designs – Design 3.html") collected.push(fullPath);
+  }
+}
+const htmlPages = [];
+collectHtml(publicDir, htmlPages);
+for (const page of htmlPages) {
+  const html = fs.readFileSync(page, "utf8");
+  if (!html.includes('href="/mj-red-chatbot.css"') || !html.includes('src="/mj-red-chatbot.js"')) {
+    console.error(\`Build failed: RED chatbot is not included in \${path.relative(publicDir, page)}.\`);
+    process.exit(1);
+  }
+}
+console.log(\`RED chatbot assets verified on \${htmlPages.length} HTML pages.\`);
+
 const files = fs.readdirSync(publicDir);
-console.log(`Static site ready in public/ (${files.length} top-level files), ${requiredServicePages.length} service pages, ${requiredProjectPages.length} project case studies and ${requiredLocationPages.length} location landing pages:`);
+console.log(\`Static site ready in public/ (\${files.length} top-level files), \${requiredServicePages.length} service pages, \${requiredProjectPages.length} project case studies and \${requiredLocationPages.length} location landing pages:\`);
 for (const file of files) console.log(" -", file);
