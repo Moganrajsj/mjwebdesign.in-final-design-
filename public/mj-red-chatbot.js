@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  if (!document.body || document.getElementById('mjw')) return;
+  if (!document.body) return;
 
   /* Original chatbot HTML is included directly in each page. */
   var root = document.getElementById('mjw');
