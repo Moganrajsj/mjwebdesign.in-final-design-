@@ -6,6 +6,9 @@
   "functions": {
     "api/enquiry.js": {
       "maxDuration": 15
+    },
+    "api/chat.js": {
+      "maxDuration": 15
     }
   }
 }

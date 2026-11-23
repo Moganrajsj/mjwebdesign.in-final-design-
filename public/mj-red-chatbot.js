@@ -25,9 +25,8 @@
   ].join('');
   document.body.appendChild(root);
 
-  /* To connect real AI later, set this to your secure server endpoint.
-     Never put an AI provider API key in this browser-side file. */
-  var AI_ENDPOINT = '';
+  /* Gemini is called through our same-origin serverless function. The API key stays server-side. */
+  var AI_ENDPOINT = '/api/chat';
   var WA = 'https://wa.me/919843176704';
   var launch = root.querySelector('.mjw-launch');
   var win = root.querySelector('.mjw-win');

@@ -2,6 +2,7 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const { sendEnquiry } = require("../lib/enquiry");
+const { generateReply } = require("../lib/gemini-chat");
 
 const ROOT = path.join(__dirname, "..");
 const PUBLIC = path.join(ROOT, "public");
@@ -96,6 +97,21 @@ const server = http.createServer(async (req, res) => {
     urlPath = decodeURIComponent(new URL(req.url, `http://${req.headers.host || HOST}`).pathname);
   } catch {
     return send(res, 400, "Bad Request");
+  }
+
+  if (urlPath === "/api/chat") {
+    if (req.method !== "POST") {
+      res.setHeader("Allow", "POST");
+      return sendJson(res, 405, { error: "Use POST" });
+    }
+    let body;
+    try {
+      body = await readJsonBody(req, 20 * 1024);
+    } catch (err) {
+      return sendJson(res, 400, { error: err.message });
+    }
+    const result = await generateReply(body || {});
+    return sendJson(res, result.status, result.body);
   }
 
   if (urlPath === "/api/enquiry") {
