@@ -36,7 +36,7 @@ if (!fs.existsSync(notFoundPage)) {
   process.exit(1);
 }
 const notFoundHtml = fs.readFileSync(notFoundPage, "utf8");
-if (!/<meta\\s+name=["']robots["']\\s+content=["']noindex,\\s*follow["']/i.test(notFoundHtml)) {
+if (!/<meta\s+name=["']robots["']\s+content=["']noindex,\s*follow["']/i.test(notFoundHtml)) {
   console.error("Build failed: public/404.html must include robots noindex, follow.");
   process.exit(1);
 }
