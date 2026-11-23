@@ -104,7 +104,7 @@
     log.scrollTop = log.scrollHeight;
   }
 
-  function botSay(text, link) {
+  function botSay(text, link, remember) {
     setState('thinking');
     var typing = document.createElement('div');
     typing.className = 'mjw-m mjw-bot mjw-typing';
@@ -116,7 +116,7 @@
       window.setTimeout(function () {
         typing.remove();
         add(text, 'bot', link);
-        history.push({ role: 'assistant', content: text });
+        if (remember !== false) history.push({ role: 'assistant', content: text });
         setState('replying');
         window.setTimeout(function () { setState('idle'); }, 900);
         resolve();
@@ -128,20 +128,20 @@
     if (flow === 'name') {
       lead.name = text;
       flow = 'phone';
-      botSay('Nice to meet you, ' + text + '. What’s your phone number?');
+      botSay('Nice to meet you, ' + text + '. What’s your phone number?', null, false);
     } else if (flow === 'phone') {
       if (text.replace(/\D/g, '').length < 10) {
-        botSay('That doesn’t look like a full phone number. Please type a 10-digit number.');
+        botSay('That doesn’t look like a full phone number. Please type a 10-digit number.', null, false);
         return;
       }
       lead.phone = text;
       flow = 'need';
-      botSay('What do you need? For example a website, an online store or a logo.');
+      botSay('What do you need? For example a website, an online store or a logo.', null, false);
     } else if (flow === 'need') {
       lead.need = text;
       flow = null;
       var message = 'Hi, I am ' + lead.name + ' (' + lead.phone + '). I need: ' + lead.need;
-      botSay('Thanks, ' + lead.name + '! Tap the button to send this to Mogan on WhatsApp. He will reply with ideas and a quote.', [WA + '?text=' + encodeURIComponent(message), 'Send on WhatsApp']);
+      botSay('Thanks, ' + lead.name + '! Tap the button to send this to Mogan on WhatsApp. He will reply with ideas and a quote.', [WA + '?text=' + encodeURIComponent(message), 'Send on WhatsApp'], false);
     }
   }
 
@@ -150,17 +150,18 @@
     if (!text) return;
     chipsBox.innerHTML = '';
     add(text, 'me');
-    history.push({ role: 'user', content: text });
     if (flow) {
       flowStep(text);
       return;
     }
     if (/get a quote|need a quote|want a quote/i.test(text)) {
+      history = [];
       flow = 'name';
       lead = {};
-      botSay('Happy to help. What’s your name?');
+      botSay('Happy to help. What’s your name?', null, false);
       return;
     }
+    history.push({ role: 'user', content: text });
     getReply(text).then(function (reply) { botSay(reply.a, reply.link); });
   }
 

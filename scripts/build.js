@@ -14,7 +14,7 @@ const requiredLegalPages = ["privacy-policy", "about-us"];
 for (const slug of requiredLegalPages) {
   const page = path.join(publicDir, slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: legal page is missing for "\${slug}".`);
+    console.error(`Build failed: legal page is missing for "${slug}".`);
     process.exit(1);
   }
 }
@@ -40,7 +40,7 @@ const requiredLocationPages = ["website-design-company-tamil-nadu"];
 for (const slug of requiredLocationPages) {
   const page = path.join(publicDir, slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: location landing page is missing for "\${slug}".`);
+    console.error(`Build failed: location landing page is missing for "${slug}".`);
     process.exit(1);
   }
 }
@@ -49,7 +49,7 @@ const requiredServicePages = ["website-design", "ecommerce", "brand-identity", "
 for (const slug of requiredServicePages) {
   const page = path.join(publicDir, "services", slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: service page is missing for "\${slug}".`);
+    console.error(`Build failed: service page is missing for "${slug}".`);
     process.exit(1);
   }
 }
@@ -58,7 +58,7 @@ const requiredProjectPages = ["sriram-broadband", "ayli-womens-fashion", "spidy-
 for (const slug of requiredProjectPages) {
   const page = path.join(publicDir, "projects", slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: project case study is missing for "\${slug}".`);
+    console.error(`Build failed: project case study is missing for "${slug}".`);
     process.exit(1);
   }
 }
@@ -74,7 +74,7 @@ const requiredInsightsPages = [
 for (const slug of requiredInsightsPages) {
   const page = path.join(publicDir, slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: insights page is missing for "\${slug}".`);
+    console.error(`Build failed: insights page is missing for "${slug}".`);
     process.exit(1);
   }
 }
@@ -90,7 +90,7 @@ const requiredNewInsights = [
 for (const slug of requiredNewInsights) {
   const page = path.join(publicDir, slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: new insights page is missing for "\${slug}".`);
+    console.error(`Build failed: new insights page is missing for "${slug}".`);
     process.exit(1);
   }
 }
@@ -107,7 +107,7 @@ const requiredModelLaunchInsights = [
 for (const slug of requiredModelLaunchInsights) {
   const page = path.join(publicDir, slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: model launch insight is missing for "\${slug}".`);
+    console.error(`Build failed: model launch insight is missing for "${slug}".`);
     process.exit(1);
   }
 }
@@ -127,7 +127,7 @@ const requiredAiInsights = [
 for (const slug of requiredAiInsights) {
   const page = path.join(publicDir, slug, "index.html");
   if (!fs.existsSync(page)) {
-    console.error(`Build failed: AI insights page is missing for "\${slug}".`);
+    console.error(`Build failed: AI insights page is missing for "${slug}".`);
     process.exit(1);
   }
 }
@@ -143,7 +143,7 @@ for (const file of ["api/chat.js", "lib/gemini-chat.js"]) {
 /* Verify the shared RED chatbot assets and their references on every live HTML page. */
 for (const asset of ["mj-red-chatbot.css", "mj-red-chatbot.js"]) {
   if (!fs.existsSync(path.join(publicDir, asset))) {
-    console.error(`Build failed: public/\${asset} is missing.`);
+    console.error(`Build failed: public/${asset} is missing.`);
     process.exit(1);
   }
 }
@@ -159,12 +159,12 @@ collectHtml(publicDir, htmlPages);
 for (const page of htmlPages) {
   const html = fs.readFileSync(page, "utf8");
   if (!html.includes('href="/mj-red-chatbot.css"') || !html.includes('src="/mj-red-chatbot.js"')) {
-    console.error(`Build failed: RED chatbot is not included in \${path.relative(publicDir, page)}.`);
+    console.error(`Build failed: RED chatbot is not included in ${path.relative(publicDir, page)}.`);
     process.exit(1);
   }
 }
-console.log(`RED chatbot assets verified on \${htmlPages.length} HTML pages.`);
+console.log(`RED chatbot assets verified on ${htmlPages.length} HTML pages.`);
 
 const files = fs.readdirSync(publicDir);
-console.log(`Static site ready in public/ (\${files.length} top-level files), \${requiredServicePages.length} service pages, \${requiredProjectPages.length} project case studies and \${requiredLocationPages.length} location landing pages:`);
+console.log(`Static site ready in public/ (${files.length} top-level files), ${requiredServicePages.length} service pages, ${requiredProjectPages.length} project case studies and ${requiredLocationPages.length} location landing pages:`);
 for (const file of files) console.log(" -", file);
