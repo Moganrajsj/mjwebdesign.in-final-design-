@@ -158,12 +158,18 @@ const htmlPages = [];
 collectHtml(publicDir, htmlPages);
 for (const page of htmlPages) {
   const html = fs.readFileSync(page, "utf8");
+  const relativePage = path.relative(publicDir, page);
   if (!html.includes('href="/mj-red-chatbot.css"') || !html.includes('src="/mj-red-chatbot.js"')) {
-    console.error(`Build failed: RED chatbot is not included in ${path.relative(publicDir, page)}.`);
+    console.error(`Build failed: RED chatbot assets are not included in ${relativePage}.`);
+    process.exit(1);
+  }
+  const widgetCount = (html.match(/<div class="mjw" id="mjw" data-state="idle">/g) || []).length;
+  if (widgetCount !== 1) {
+    console.error(`Build failed: expected exactly one original RED chatbot markup block in ${relativePage}; found ${widgetCount}.`);
     process.exit(1);
   }
 }
-console.log(`RED chatbot assets verified on ${htmlPages.length} HTML pages.`);
+console.log(`Original RED chatbot markup and shared assets verified on ${htmlPages.length} HTML pages.`);
 
 const files = fs.readdirSync(publicDir);
 console.log(`Static site ready in public/ (${files.length} top-level files), ${requiredServicePages.length} service pages, ${requiredProjectPages.length} project case studies and ${requiredLocationPages.length} location landing pages:`);
