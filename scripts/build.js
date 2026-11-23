@@ -30,6 +30,17 @@ if (!fs.existsSync(favicon)) {
   process.exit(1);
 }
 
+const notFoundPage = path.join(publicDir, "404.html");
+if (!fs.existsSync(notFoundPage)) {
+  console.error("Build failed: public/404.html is missing.");
+  process.exit(1);
+}
+const notFoundHtml = fs.readFileSync(notFoundPage, "utf8");
+if (!/<meta\\s+name=["']robots["']\\s+content=["']noindex,\\s*follow["']/i.test(notFoundHtml)) {
+  console.error("Build failed: public/404.html must include robots noindex, follow.");
+  process.exit(1);
+}
+
 const requiredLocationPages = [
   "website-design-company-tamil-nadu",
 ];
