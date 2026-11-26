@@ -159,6 +159,19 @@ collectHtml(publicDir, htmlPages);
 for (const page of htmlPages) {
   const html = fs.readFileSync(page, "utf8");
   const relativePage = path.relative(publicDir, page);
+
+  const descriptionTags = html.match(/<meta\\b(?=[^>]*\\bname=["']description["'])[^>]*>/gi) || [];
+  if (descriptionTags.length !== 1) {
+    console.error(`Build failed: expected exactly one meta description in ${relativePage}; found ${descriptionTags.length}.`);
+    process.exit(1);
+  }
+  const descriptionMatch = descriptionTags[0].match(/\\bcontent=["']([^"']*)["']/i);
+  const descriptionLength = descriptionMatch ? descriptionMatch[1].trim().length : 0;
+  if (descriptionLength < 25 || descriptionLength > 160) {
+    console.error(`Build failed: meta description in ${relativePage} must be 25–160 characters; found ${descriptionLength}.`);
+    process.exit(1);
+  }
+
   if (!html.includes('href="/mj-red-chatbot.css"') || !html.includes('src="/mj-red-chatbot.js"')) {
     console.error(`Build failed: RED chatbot assets are not included in ${relativePage}.`);
     process.exit(1);
@@ -169,7 +182,7 @@ for (const page of htmlPages) {
     process.exit(1);
   }
 }
-console.log(`Original RED chatbot markup and shared assets verified on ${htmlPages.length} HTML pages.`);
+console.log(`SEO descriptions, original RED chatbot markup and shared assets verified on ${htmlPages.length} HTML pages.`);
 
 const files = fs.readdirSync(publicDir);
 console.log(`Static site ready in public/ (${files.length} top-level files), ${requiredServicePages.length} service pages, ${requiredProjectPages.length} project case studies and ${requiredLocationPages.length} location landing pages:`);
