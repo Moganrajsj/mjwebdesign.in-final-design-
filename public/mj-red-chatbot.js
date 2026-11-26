@@ -39,7 +39,7 @@
     { k: ['website', 'web site', 'site', 'web'], a: 'We design fast websites that work well on phones and are easy for visitors to use. Most business websites take a few weeks.' },
     { k: ['how long', 'time', 'days', 'weeks', 'deliver'], a: 'Most business websites take a few weeks, depending on the size of the site and how quickly we receive your content.' },
     { k: ['where', 'location', 'dharmapuri', 'tamil', 'city'], a: 'We work with businesses in Dharmapuri and across Tamil Nadu.' },
-    { k: ['contact', 'call', 'phone', 'number', 'whatsapp', 'email', 'mail'], a: 'Phone and WhatsApp: +91 98431 76704. Email: mjwebdesigns.in@gmail.com.', link: [WA, 'Chat on WhatsApp'] }
+    { k: ['contact', 'call', 'phone', 'number', 'whatsapp', 'email', 'mail'], a: 'Phone and WhatsApp: +91 98431 76704. Email: info@mjwebdesign.in.', link: [WA, 'Chat on WhatsApp'] }
   ];
   var FALLBACK = { a: 'I’m not sure about that one. The quickest way is to message Mogan directly.', link: [WA, 'Message on WhatsApp'] };
 
