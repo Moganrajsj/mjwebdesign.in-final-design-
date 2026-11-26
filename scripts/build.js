@@ -160,12 +160,12 @@ for (const page of htmlPages) {
   const html = fs.readFileSync(page, "utf8");
   const relativePage = path.relative(publicDir, page);
 
-  const descriptionTags = html.match(/<meta\\b(?=[^>]*\\bname=["']description["'])[^>]*>/gi) || [];
+  const descriptionTags = html.match(/<meta\b(?=[^>]*\bname=["']description["'])[^>]*>/gi) || [];
   if (descriptionTags.length !== 1) {
     console.error(`Build failed: expected exactly one meta description in ${relativePage}; found ${descriptionTags.length}.`);
     process.exit(1);
   }
-  const descriptionMatch = descriptionTags[0].match(/\\bcontent=["']([^"']*)["']/i);
+  const descriptionMatch = descriptionTags[0].match(/\bcontent="([^"]*)"/i);
   const descriptionLength = descriptionMatch ? descriptionMatch[1].trim().length : 0;
   if (descriptionLength < 25 || descriptionLength > 160) {
     console.error(`Build failed: meta description in ${relativePage} must be 25–160 characters; found ${descriptionLength}.`);
