@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5J2XM99H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Explore current website and web app builds by MJ Web Designs, with project notes and links to public GitHub repositories.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FFD60A">
+<link rel="canonical" href="https://www.mjwebdesign.in/in-development/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MJ Web Designs">
+<meta property="og:title" content="In Development | MJ Web Designs">
+<meta property="og:description" content="A behind-the-scenes look at digital products and web experiences currently being built by MJ Web Designs.">
+<meta property="og:url" content="https://www.mjwebdesign.in/in-development/">
+<title>In Development | MJ Web Designs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="stylesheet" href="/mj-red-chatbot.css">
+<script src="/mj-red-chatbot.js" defer></script>
+<style>
+:root{--yellow:#FFD60A;--blue:#1F3BFF;--ink:#080808;--paper:#fff;--panel:#F1F2FF;--muted:#57576D;--display:'Unbounded','Arial Black',sans-serif;--body:'Manrope',Arial,sans-serif;box-sizing:border-box}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 16px/1.65 var(--body)}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--blue);outline-offset:4px}
+.wrap{width:min(1160px,calc(100% - 48px));margin:auto}
+.mast{position:sticky;top:0;z-index:30;background:var(--yellow);border-bottom:3px solid var(--ink)}
+.mast-in{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font:800 1.05rem var(--display);letter-spacing:-.06em;text-decoration:none;white-space:nowrap}
+.mast-actions{display:flex;align-items:center;gap:18px}
+.mast-note{font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 20px;border:3px solid var(--ink);background:var(--blue);color:#fff;box-shadow:4px 4px 0 var(--ink);font:800 .9rem var(--body);text-decoration:none;transition:transform .15s,box-shadow .15s}
+.button:hover{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.button.dark{background:var(--ink);color:var(--yellow)}
+.hero{padding:clamp(68px,10vw,126px) 0 76px;background:var(--yellow);border-bottom:3px solid var(--ink);overflow:hidden}
+.eyebrow{display:flex;align-items:center;gap:12px;font:800 .72rem var(--display);letter-spacing:.12em;text-transform:uppercase}
+.eyebrow:before{content:"";width:34px;height:4px;background:var(--blue)}
+h1,h2,h3,p{margin:0}
+h1{max-width:1000px;margin-top:24px;font:800 clamp(3.2rem,10.5vw,8.2rem)/.91 var(--display);letter-spacing:-.09em;text-transform:uppercase}
+h1 span{display:inline-block;background:var(--ink);color:var(--yellow);padding:0 .12em;transform:rotate(-2deg)}
+.hero-copy{max-width:610px;margin-top:30px;font-size:clamp(1rem,2vw,1.2rem);font-weight:700}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-top:46px}
+.hero-stats{display:flex;gap:12px;flex-wrap:wrap}
+.stat{padding:10px 14px;border:2px solid var(--ink);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.stat b{color:var(--blue)}
+main{padding:82px 0 96px}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:25px;margin-bottom:36px}
+.section-head h2{font:800 clamp(2rem,5vw,3.5rem)/1 var(--display);letter-spacing:-.07em}
+.section-head p{max-width:410px;color:var(--muted);font-weight:600}
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.project{min-width:0;border:3px solid var(--ink);background:#fff;box-shadow:8px 8px 0 var(--ink);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.project:hover{transform:translateY(-5px);box-shadow:12px 13px 0 var(--ink)}
+.snapshot{position:relative;min-height:250px;overflow:hidden;padding:26px;display:flex;flex-direction:column;justify-content:space-between;border-bottom:3px solid var(--ink)}
+.snapshot:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.2;background-image:linear-gradient(90deg,transparent 49.6%,rgba(255,255,255,.3) 50%,transparent 50.4%),linear-gradient(transparent 49.6%,rgba(255,255,255,.3) 50%,transparent 50.4%);background-size:46px 46px}
+.snapshot-top,.snapshot-title,.snapshot-bottom{position:relative;z-index:1}
+.snapshot-top{display:flex;align-items:center;justify-content:space-between;gap:12px;font:800 .68rem var(--display);letter-spacing:.1em;text-transform:uppercase}
+.snapshot-chip{padding:6px 9px;background:var(--yellow);color:var(--ink);border:2px solid var(--ink)}
+.snapshot-title{font:800 clamp(2.25rem,5vw,4rem)/.92 var(--display);letter-spacing:-.08em;text-transform:uppercase}
+.snapshot-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.snapshot-turf{background:#0A1124;color:#fff}
+.snapshot-turf .snapshot-title em{color:var(--yellow);font-style:normal}
+.snapshot-turf .snapshot-bottom span:last-child{color:var(--yellow)}
+.snapshot-ayli{background:var(--blue);color:#fff}
+.snapshot-ayli .snapshot-title em{color:var(--yellow);font-style:normal}
+.snapshot-ayli .snapshot-chip{background:#fff}
+.project-body{padding:28px;display:flex;flex-direction:column;flex:1}
+.project-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.project-type{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
+.status{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:2px solid var(--ink);background:var(--yellow);font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.status:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 3px rgba(31,59,255,.15)}
+.project h3{margin-top:18px;font:800 clamp(1.55rem,3vw,2rem)/1.1 var(--display);letter-spacing:-.06em}
+.project-desc{margin-top:12px;color:#45455a;font-weight:600}
+.scope{margin-top:24px}
+.scope-label{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tags span{padding:7px 10px;background:var(--panel);border:1px solid #c8c9e7;font-size:.73rem;font-weight:800}
+.repo-data{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:24px;padding-top:16px;border-top:2px solid #e7e7ef;color:#55556a;font-size:.75rem;font-weight:700}
+.repo-data span{display:inline-flex;align-items:center;gap:6px}
+.repo-data b{color:var(--ink)}
+.repo-data .loading{color:var(--blue)}
+.project-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.project-actions .button{min-height:44px;padding:10px 14px;font-size:.78rem}
+.project-actions .button.outline{background:#fff;color:var(--ink)}
+.github-note{margin-top:32px;padding:18px 20px;border-left:7px solid var(--blue);background:var(--panel);color:#41415a;font-size:.82rem;font-weight:600}
+.github-note strong{color:var(--ink)}
+.next{padding:68px 0;background:var(--ink);color:#fff}
+.next-in{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.next h2{max-width:650px;font:800 clamp(2rem,5vw,3.6rem)/1.02 var(--display);letter-spacing:-.07em}
+.next h2 span{color:var(--yellow)}
+.next p{max-width:380px;margin-top:14px;color:#c6c6d4}
+footer{padding:24px 0;background:var(--yellow);border-top:3px solid var(--ink)}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:.8rem;font-weight:800}
+.foot-in a{text-decoration-thickness:2px;text-underline-offset:4px}
+@media(max-width:800px){.projects{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.mast-note{display:none}}
+@media(max-width:520px){.wrap{width:min(100% - 32px,1160px)}.mast-in{min-height:64px}.brand{font-size:.86rem}.mast-actions{gap:8px}.mast-actions .button{min-height:40px;padding:8px 11px;font-size:.72rem}.hero{padding-top:64px}.hero-bottom{align-items:flex-start}.snapshot{min-height:220px;padding:20px}.project-body{padding:22px}.project-actions .button{flex:1}.foot-in{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project,.button{transition:none}}
+</style>
+</head>
+<body>
+<header class="mast">
+  <div class="wrap mast-in">
+    <a class="brand" href="/">MJ WEB DESIGNS</a>
+    <div class="mast-actions">
+      <span class="mast-note">Studio / Development log</span>
+      <a class="button dark" href="/#contact">Let’s talk <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">MJ Web Designs / Behind the build</p>
+    <h1>Work in <span>progress.</span></h1>
+    <p class="hero-copy">A closer look at the digital products and web experiences we’re currently shaping. Explore what we’re building and follow the public code on GitHub.</p>
+    <div class="hero-bottom">
+      <div class="hero-stats">
+        <span class="stat"><b>01</b> / Concept</span>
+        <span class="stat"><b>02</b> / Build</span>
+        <span class="stat"><b>03</b> / Refine</span>
+      </div>
+      <a class="button" href="#active-builds">Explore active builds <span aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+</section>
+
+<main id="active-builds">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Currently building</h2>
+      <p>These are selected projects in progress. Their stage descriptions are maintained by our team; repository language and latest push dates are fetched from GitHub.</p>
+    </div>
+
+    <div class="projects">
+      <article class="project" data-repo="sai-saravana-turf">
+        <div class="snapshot snapshot-turf" aria-label="Sai Saravana Turf development graphic">
+          <div class="snapshot-top"><span>Sai Saravana / Digital experience</span><span class="snapshot-chip">Build 01</span></div>
+          <div class="snapshot-title">Book.<br><em>Play.</em><br>Repeat.</div>
+          <div class="snapshot-bottom"><span>Sports &amp; recreation</span><span>Booking platform</span></div>
+        </div>
+        <div class="project-body">
+          <div class="project-meta"><p class="project-type">Sports &amp; Recreation · Web Application</p><span class="status">In development</span></div>
+          <h3>Sai Saravana Turf</h3>
+          <p class="project-desc">A digital booking experience for a sports venue. The planned scope brings customer slot selection, booking flow and staff/admin operations into one connected platform.</p>
+          <div class="scope">
+            <p class="scope-label">Planned build scope</p>
+            <div class="tags"><span>Customer booking</span><span>Employee portal</span><span>Admin dashboard</span><span>QR check-in</span></div>
+          </div>
+          <div class="repo-data" aria-live="polite">
+            <span>Language: <b data-language class="loading">Loading…</b></span>
+            <span>Latest push: <b data-pushed class="loading">Checking GitHub…</b></span>
+          </div>
+          <div class="project-actions">
+            <a class="button" href="https://github.com/Moganrajsj/sai-saravana-turf" target="_blank" rel="noopener noreferrer">Explore code on GitHub <span aria-hidden="true">↗</span></a>
+            <a class="button outline" href="https://github.com/Moganrajsj/sai-saravana-turf/commits/main" target="_blank" rel="noopener noreferrer">View commits</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project" data-repo="ayli">
+        <div class="snapshot snapshot-ayli" aria-label="AYLI e-commerce development graphic">
+          <div class="snapshot-top"><span>AYLI / Fashion commerce</span><span class="snapshot-chip">Build 02</span></div>
+          <div class="snapshot-title">Style.<br><em>In motion.</em></div>
+          <div class="snapshot-bottom"><span>Fashion</span><span>E-commerce experience</span></div>
+        </div>
+        <div class="project-body">
+          <div class="project-meta"><p class="project-type">E-commerce · Fashion</p><span class="status">In development</span></div>
+          <h3>AYLI</h3>
+          <p class="project-desc">A women’s fashion e-commerce experience, with ongoing work focused on the digital storefront, product presentation and a smooth mobile shopping journey.</p>
+          <div class="scope">
+            <p class="scope-label">Work focus</p>
+            <div class="tags"><span>Storefront experience</span><span>Product discovery</span><span>Mobile shopping</span></div>
+          </div>
+          <div class="repo-data" aria-live="polite">
+            <span>Language: <b data-language class="loading">Loading…</b></span>
+            <span>Latest push: <b data-pushed class="loading">Checking GitHub…</b></span>
+          </div>
+          <div class="project-actions">
+            <a class="button" href="https://github.com/Moganrajsj/ayli" target="_blank" rel="noopener noreferrer">Explore code on GitHub <span aria-hidden="true">↗</span></a>
+            <a class="button outline" href="https://github.com/Moganrajsj/ayli/commits/main" target="_blank" rel="noopener noreferrer">View commits</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <p class="github-note"><strong>How this works:</strong> The code stays in its GitHub repository. This page reads only public repository metadata (primary language and latest push date); it does not copy source files, secrets or private project data onto the MJ Web Designs website. Project descriptions and development stages are curated by our team.</p>
+  </div>
+</main>
+
+<section class="next">
+  <div class="wrap next-in">
+    <div><h2>Have an idea worth <span>building?</span></h2><p>Tell us what you have in mind. We’ll help plan the experience and bring it to life.</p></div>
+    <a class="button dark" href="/#contact">Start a project <span aria-hidden="true">↗</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>© 2026 MJ Web Designs. Built with intent.</span>
+    <a href="/">Back to MJ Web Designs</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var cards = document.querySelectorAll("[data-repo]");
+  cards.forEach(function (card) {
+    var repo = card.getAttribute("data-repo");
+    var language = card.querySelector("[data-language]");
+    var pushed = card.querySelector("[data-pushed]");
+    fetch("https://api.github.com/repos/Moganrajsj/" + encodeURIComponent(repo), {
+      headers: { "Accept": "application/vnd.github+json" }
+    })
+      .then(function (response) {
+        if (!response.ok) throw new Error("GitHub metadata unavailable");
+        return response.json();
+      })
+      .then(function (data) {
+        language.textContent = data.language || "Not specified";
+        pushed.textContent = data.pushed_at
+          ? new Intl.DateTimeFormat("en-IN", { day: "2-digit", month: "short", year: "numeric", timeZone: "Asia/Kolkata" }).format(new Date(data.pushed_at))
+          : "Not available";
+        language.classList.remove("loading");
+        pushed.classList.remove("loading");
+      })
+      .catch(function () {
+        language.textContent = "Unavailable";
+        pushed.textContent = "Unavailable";
+        language.classList.remove("loading");
+        pushed.classList.remove("loading");
+      });
+  });
+})();
+</script>
+
+<!-- RED chatbot: original MJ design and structure -->
+<div class="mjw" id="mjw" data-state="idle">
+  <button class="mjw-launch" type="button" aria-label="Chat with RED" aria-expanded="false" aria-controls="mjw-win">
+    <span class="mjw-lm" data-mark></span><span>Ask RED</span>
+  </button>
+  <section class="mjw-win" id="mjw-win" role="dialog" aria-label="Chat with RED, the MJ web designs assistant" hidden>
+    <div class="mjw-stage">
+      <div class="mjw-top"><div><b>RED</b><small>MJ web designs AI assistant</small></div><button class="mjw-x" type="button" aria-label="Close">×</button></div>
+      <div class="mjw-live">
+        <div class="mjw-sl" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span class="mjw-mk" data-mark></span>
+      </div>
+      <span class="mjw-st" id="mjw-st">Ready</span>
+    </div>
+    <div class="mjw-log" role="log" aria-live="polite"></div>
+    <div class="mjw-chips"></div>
+    <form class="mjw-form" autocomplete="off">
+      <input type="text" aria-label="Type your message" placeholder="Type your message" maxlength="300">
+      <button class="mjw-go" type="submit" aria-label="Send">→</button>
+    </form>
+    <p class="mjw-note">RED is an AI and can make mistakes. <a href="https://wa.me/919843176704" target="_blank" rel="noopener noreferrer">Talk to a person</a></p>
+  </section>
+</div>
+</body>
+</html>
