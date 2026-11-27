@@ -107,6 +107,7 @@ h2{font-size:clamp(1.9rem,4.6vw,3.4rem);font-weight:800}
 .top nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
 .logo{font:800 1.15rem var(--d);text-decoration:none;letter-spacing:-.04em}
 .links{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-weight:700}
+.nav-ctas{display:flex;align-items:center;gap:12px}
 .links a{text-decoration:none}.links a:hover{text-decoration:underline;text-decoration-thickness:3px}
 .hero{padding:84px 0 72px;overflow-x:clip}
 .hero h1{font-size:clamp(2.8rem,10.5vw,8.6rem);font-weight:800;letter-spacing:-.06em;line-height:.9}
@@ -343,6 +344,7 @@ blockquote footer{margin-top:18px;color:var(--muted);font-size:.95rem}
 
 @media (max-width:900px){
   .links{display:none}
+  .top nav .wrap{gap:8px}.nav-ctas{gap:6px}.nav-ctas .btn{padding:8px 10px!important;font-size:.78rem}.top .logo{font-size:.9rem}
   section{padding:72px 0}
   .whyg,.qs{grid-template-columns:1fr}
   .proj,.proj:nth-of-type(even){grid-template-columns:1fr}
@@ -468,7 +470,7 @@ body::after{
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <a class="btn" style="padding:9px 18px;box-shadow:3px 3px 0 #000" href="/in-development/">In Development</a>
+      <div class="nav-ctas"><a class="btn" style="padding:9px 18px;box-shadow:3px 3px 0 #000" href="#contact">Let’s talk</a><a class="btn" style="padding:9px 18px;box-shadow:3px 3px 0 #000;background:#1F3BFF;color:#fff" href="/in-development/">In Development</a></div>
     </div>
   </nav>
   <header class="hero">
