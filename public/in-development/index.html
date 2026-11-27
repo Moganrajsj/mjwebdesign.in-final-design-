@@ -119,7 +119,7 @@ footer{padding:24px 0;background:var(--yellow);border-top:3px solid var(--ink)}
   <div class="wrap">
     <p class="eyebrow">MJ Web Designs / Behind the build</p>
     <h1>Explore what<br>we’re <span>building.</span></h1>
-    <p class="hero-copy">Step inside our current projects. Explore the actual websites right here, switch between builds and experience the work as it takes shape.</p>
+    <p class="hero-copy">Step inside our current project. Explore the actual website right here and experience the work as it takes shape.</p>
     <div class="hero-bottom">
       <div class="hero-stats">
         <span class="stat"><b>01</b> / Design</span>
@@ -135,23 +135,20 @@ footer{padding:24px 0;background:var(--yellow);border-top:3px solid var(--ink)}
   <div class="wrap">
     <div class="section-head">
       <h2>Explore the builds</h2>
-      <p>These are real project websites displayed inside this page. Select a project below to switch the live preview.</p>
+      <p>Explore the Sai Saravana Turf website directly inside this page using the interactive live preview below.</p>
     </div>
 
     <section class="preview-panel" aria-label="Live project website preview">
       <div class="preview-head">
-        <div class="tabs" role="tablist" aria-label="Choose a project preview">
-          <button class="tab" type="button" role="tab" id="tab-turf" aria-selected="true" aria-controls="project-preview" data-project="turf">Sai Saravana Turf</button>
-          <button class="tab" type="button" role="tab" id="tab-ayli" aria-selected="false" aria-controls="project-preview" data-project="ayli">AYLI</button>
-        </div>
-        <span class="preview-hint">Select a project to explore</span>
+        <strong style="font:800 .82rem var(--display);letter-spacing:-.02em">SAI SARAVANA TURF</strong>
+        <span class="preview-hint">Interactive website preview</span>
       </div>
       <div class="browserbar" aria-hidden="true">
         <span class="browser-dots"><i></i><i></i><i></i></span>
         <span class="browser-address" id="preview-address">Sai Saravana Turf · Live website preview</span>
         <span class="live-label">Website preview</span>
       </div>
-      <div class="preview-frame" id="project-preview" role="tabpanel" aria-labelledby="tab-turf">
+      <div class="preview-frame" id="project-preview">
         <iframe
           id="project-iframe"
           src="/in-development/previews/sai-saravana-turf/"
@@ -173,7 +170,7 @@ footer{padding:24px 0;background:var(--yellow);border-top:3px solid var(--ink)}
       </div>
     </section>
     <p class="preview-note"><strong>Sai Saravana Turf preview:</strong> This is the current interactive front-end build. Slot selection and payment confirmation are demo interactions only; they do not create a real booking or process a payment. </p>
-    <p class="preview-note"><strong>About these previews:</strong> Sai Saravana Turf is served from the website files included in this project. AYLI is shown from its live deployment so the complete store experience stays connected to its own application and services. No source-code or repository links are displayed here.</p>
+    <p class="preview-note"><strong>About this preview:</strong> Sai Saravana Turf is served from the website files included in this project. This is the current interactive front-end build; booking and payment confirmations are demonstrations only.</p>
   </div>
 </main>
 
@@ -193,30 +190,8 @@ footer{padding:24px 0;background:var(--yellow);border-top:3px solid var(--ink)}
 
 <script>
 (function () {
-  var projects = {
-    turf: {
-      src: "/in-development/previews/sai-saravana-turf/",
-      name: "Sai Saravana Turf",
-      title: "Sai Saravana Turf actual website preview",
-      meta: "Sports & recreation · Booking website",
-      description: "Explore the actual Sai Saravana Turf website, including its grounds, facilities, visual experience and booking information.",
-      open: "/in-development/previews/sai-saravana-turf/",
-      address: "Sai Saravana Turf · Live website preview"
-    },
-    ayli: {
-      src: "https://ayli-psi.vercel.app/",
-      name: "AYLI",
-      title: "AYLI actual e-commerce website preview",
-      meta: "Fashion · E-commerce website",
-      description: "Explore the deployed AYLI fashion store and its complete customer-facing shopping experience.",
-      open: "https://ayli-psi.vercel.app/",
-      address: "AYLI · Live website preview"
-    }
-  };
   var frame = document.getElementById("project-iframe");
-  var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-project]"));
   var loading = document.getElementById("preview-loading");
-  var current = "turf";
   var loadTimer;
 
   function setLoading() {
@@ -230,41 +205,6 @@ footer{padding:24px 0;background:var(--yellow);border-top:3px solid var(--ink)}
   frame.addEventListener("load", function () {
     window.clearTimeout(loadTimer);
     loading.classList.add("hidden");
-  });
-
-  function selectProject(key) {
-    var project = projects[key];
-    if (!project || key === current) return;
-    current = key;
-    setLoading();
-    frame.src = project.src;
-    frame.title = project.title;
-    document.getElementById("project-preview").setAttribute("aria-labelledby", "tab-" + key);
-    document.getElementById("preview-address").textContent = project.address;
-    document.getElementById("project-meta").textContent = project.meta;
-    document.getElementById("project-title").textContent = project.name;
-    document.getElementById("project-description").textContent = project.description;
-    var open = document.getElementById("open-project");
-    open.href = project.open;
-    tabs.forEach(function (tab) {
-      var active = tab.getAttribute("data-project") === key;
-      tab.setAttribute("aria-selected", active ? "true" : "false");
-      tab.tabIndex = active ? 0 : -1;
-    });
-  }
-
-  tabs.forEach(function (tab, index) {
-    tab.tabIndex = index === 0 ? 0 : -1;
-    tab.addEventListener("click", function () {
-      selectProject(tab.getAttribute("data-project"));
-    });
-    tab.addEventListener("keydown", function (event) {
-      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
-      event.preventDefault();
-      var nextIndex = event.key === "ArrowRight" ? (index + 1) % tabs.length : (index + tabs.length - 1) % tabs.length;
-      tabs[nextIndex].focus();
-      tabs[nextIndex].click();
-    });
   });
 
   setLoading();
