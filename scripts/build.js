@@ -64,6 +64,20 @@ for (const slug of requiredUtilityPages) {
     process.exit(1);
   }
 }
+
+const requiredPreviewFiles = ["in-development/previews/sai-saravana-turf/index.html"];
+for (const file of requiredPreviewFiles) {
+  if (!fs.existsSync(path.join(publicDir, file))) {
+    console.error(`Build failed: embedded project preview is missing at public/${file}.`);
+    process.exit(1);
+  }
+}
+
+const developmentPage = fs.readFileSync(path.join(publicDir, "in-development", "index.html"), "utf8");
+if (/github\\.com/i.test(developmentPage) || /api\\.github\\.com/i.test(developmentPage)) {
+  console.error("Build failed: the In Development page must not expose repository links or GitHub API references.");
+  process.exit(1);
+}
 for (const slug of requiredProjectPages) {
   const page = path.join(publicDir, "projects", slug, "index.html");
   if (!fs.existsSync(page)) {
