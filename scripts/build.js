@@ -55,6 +55,15 @@ for (const slug of requiredServicePages) {
 }
 
 const requiredProjectPages = ["sriram-broadband", "ayli-womens-fashion", "spidy-clothing", "ugan-foods", "tm-international-tradeline"];
+
+const requiredUtilityPages = ["in-development"];
+for (const slug of requiredUtilityPages) {
+  const page = path.join(publicDir, slug, "index.html");
+  if (!fs.existsSync(page)) {
+    console.error(`Build failed: utility page is missing for "${slug}".`);
+    process.exit(1);
+  }
+}
 for (const slug of requiredProjectPages) {
   const page = path.join(publicDir, "projects", slug, "index.html");
   if (!fs.existsSync(page)) {
