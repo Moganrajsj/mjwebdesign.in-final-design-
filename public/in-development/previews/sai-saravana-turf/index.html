@@ -194,6 +194,7 @@ h2 em{font-style:normal;color:var(--red)}
 @media(max-width:900px){nav ul{display:none}.gr3{grid-template-columns:1fr;gap:20px}.gr3 .n{display:none}.bk,.in2{grid-template-columns:1fr}.in2{gap:40px}.v3v{position:static;padding:12px 12px 0}.v3o{position:static;padding:0 12px 12px}.tbl>div{grid-template-columns:110px 1fr}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}h1 .ln span,.ov,.hr,.rv,.lamp,.beam{opacity:1!important;transform:none!important}.open{display:none}}
 </style>
+<link rel="stylesheet" href="/mj-red-chatbot.css">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><clipPath id="bc"><circle r="100"/></clipPath>
@@ -516,5 +517,28 @@ function loop(now){requestAnimationFrame(loop);if(!vis)return;var t=(now-t0)/100
 setM(0);requestAnimationFrame(loop);
 })();
 </script>
+<div class="mjw" id="mjw" data-state="idle">
+  <button class="mjw-launch" type="button" aria-label="Chat with RED" aria-expanded="false" aria-controls="mjw-win">
+    <span class="mjw-lm" data-mark></span><span>Ask RED</span>
+  </button>
+  <section class="mjw-win" id="mjw-win" role="dialog" aria-label="Chat with RED, the MJ web designs assistant" hidden>
+    <div class="mjw-stage">
+      <div class="mjw-top"><div><b>RED</b><small>MJ web designs AI assistant</small></div><button class="mjw-x" type="button" aria-label="Close">×</button></div>
+      <div class="mjw-live">
+        <div class="mjw-sl" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span class="mjw-mk" data-mark></span>
+      </div>
+      <span class="mjw-st" id="mjw-st">Ready</span>
+    </div>
+    <div class="mjw-log" role="log" aria-live="polite"></div>
+    <div class="mjw-chips"></div>
+    <form class="mjw-form" autocomplete="off">
+      <input type="text" aria-label="Type your message" placeholder="Type your message" maxlength="300">
+      <button class="mjw-go" type="submit" aria-label="Send">→</button>
+    </form>
+    <p class="mjw-note">RED is an AI and can make mistakes. <a href="https://wa.me/919843176704" target="_blank" rel="noopener noreferrer">Talk to a person</a></p>
+  </section>
+</div>
+<script src="/mj-red-chatbot.js" defer></script>
 </body>
 </html>
