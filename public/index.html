@@ -456,6 +456,27 @@ body::after{
 
 <link rel="stylesheet" href="/mj-red-chatbot.css">
 <script src="/mj-red-chatbot.js" defer></script>
+
+<style id="mj-preview-swipe-styles">
+  .mj-preview-swipe{display:flex;flex-direction:column;align-items:center;gap:8px;padding:22px 16px 26px;margin:34px auto 0;max-width:520px;text-align:center;color:#fff;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+  .mj-preview-swipe:focus-visible{outline:3px solid #1F3BFF;outline-offset:4px}
+  .mj-preview-swipe .mj-preview-handle{width:58px;height:6px;border-radius:99px;background:#FFD60A;box-shadow:0 0 18px rgba(255,214,10,.35);animation:mj-preview-pulse 1.8s ease-in-out infinite}
+  .mj-preview-swipe .mj-preview-arrow{color:#FFD60A;font-size:23px;line-height:1;animation:mj-preview-nudge 1.4s ease-in-out infinite}
+  .mj-preview-swipe strong{font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+  .mj-preview-swipe small{color:#aaa;font-size:12px}
+  @keyframes mj-preview-nudge{0%,100%{transform:translateY(3px)}50%{transform:translateY(-5px)}}
+  @keyframes mj-preview-pulse{0%,100%{opacity:.65;transform:scaleX(.88)}50%{opacity:1;transform:scaleX(1)}}
+  .mj-preview-overlay{position:fixed;inset:0;z-index:10050;background:#080a0c;display:flex;flex-direction:column;opacity:1;transform:translateY(0);transition:transform .48s cubic-bezier(.2,.8,.2,1),opacity .35s ease}
+  .mj-preview-overlay[hidden]{display:none}
+  .mj-preview-overlay.is-closing{opacity:0;transform:translateY(100%)}
+  .mj-preview-topbar{height:58px;min-height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;background:#111;color:#fff;border-bottom:1px solid rgba(255,255,255,.12);touch-action:none}
+  .mj-preview-back{display:flex;align-items:center;gap:9px;background:transparent;border:0;color:#fff;font:600 13px inherit;cursor:pointer;padding:10px 0}
+  .mj-preview-back span{color:#FFD60A;font-size:20px;line-height:1}
+  .mj-preview-hint{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#888}
+  .mj-preview-frame{display:block;flex:1;width:100%;height:calc(100% - 58px);border:0;background:#080a0c}
+  body.mj-preview-open{overflow:hidden}
+  @media(prefers-reduced-motion:reduce){.mj-preview-swipe .mj-preview-handle,.mj-preview-swipe .mj-preview-arrow{animation:none}.mj-preview-overlay{transition:none}}
+</style>
 </head>
 <body>
 
@@ -470,7 +491,7 @@ body::after{
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <div class="nav-ctas"><a class="btn" style="padding:9px 18px;box-shadow:3px 3px 0 #000" href="#contact">Let’s talk</a><a class="btn" style="padding:9px 18px;box-shadow:3px 3px 0 #000;background:#1F3BFF;color:#fff" href="/in-development/">In Development</a></div>
+      <div class="nav-ctas"><a class="btn" style="padding:9px 18px;box-shadow:3px 3px 0 #000" href="#contact">Let’s talk</a></div>
     </div>
   </nav>
   <header class="hero">
@@ -906,7 +927,7 @@ body::after{
       </nav>
       <nav aria-label="Company">
         <h3>Explore</h3>
-        <ul><li><a href="#work">Our work</a></li><li><a href="/in-development/">In Development</a></li><li><a href="#why">Why choose us</a></li><li><a href="#process">Our process</a></li><li><a href="#reviews">Testimonials</a></li><li><a href="/about-us/">About us</a></li><li><a href="/mj-insights/">MJ INSIGHTS</a></li><li><a href="/website-design-company-tamil-nadu/">Serving Tamil Nadu</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/#contact">Contact</a></li></ul>
+        <ul><li><a href="#work">Our work</a></li><li><a href="#why">Why choose us</a></li><li><a href="#process">Our process</a></li><li><a href="#reviews">Testimonials</a></li><li><a href="/about-us/">About us</a></li><li><a href="/mj-insights/">MJ INSIGHTS</a></li><li><a href="/website-design-company-tamil-nadu/">Serving Tamil Nadu</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/#contact">Contact</a></li></ul>
       </nav>
       <nav aria-label="Social">
         <h3>Follow</h3>
@@ -919,6 +940,21 @@ body::after{
     <span>Websites</span><i>*</i><span>E-commerce</span><i>*</i><span>Brand identity</span><i>*</i><span>Creative</span><i>*</i><span>Brand films</span><i>*</i><span>Marketing</span><i>*</i>
     <span>Websites</span><i>*</i><span>E-commerce</span><i>*</i><span>Brand identity</span><i>*</i><span>Creative</span><i>*</i><span>Brand films</span><i>*</i><span>Marketing</span><i>*</i>
   </div></div>
+
+
+  <button class="mj-preview-swipe" id="mj-preview-swipe" type="button" aria-haspopup="dialog" aria-controls="mj-preview-overlay">
+    <span class="mj-preview-handle" aria-hidden="true"></span>
+    <span class="mj-preview-arrow" aria-hidden="true">⌃</span>
+    <strong>Swipe up to explore</strong>
+    <small>Discover what we're building at MJ Web Designs</small>
+  </button>
+  <section class="mj-preview-overlay" id="mj-preview-overlay" role="dialog" aria-modal="true" aria-label="Sai Saravana Turf website preview" hidden>
+    <div class="mj-preview-topbar" id="mj-preview-topbar">
+      <button class="mj-preview-back" id="mj-preview-close" type="button"><span aria-hidden="true">←</span> Back to MJ Web Designs</button>
+      <span class="mj-preview-hint">Swipe down to close</span>
+    </div>
+    <iframe class="mj-preview-frame" id="mj-preview-frame" title="Sai Saravana Turf website preview" src="/in-development/previews/sai-saravana-turf/" loading="eager" allow="fullscreen"></iframe>
+  </section>
 
   <div class="base">
     <div class="wrap">
@@ -1225,5 +1261,58 @@ document.querySelectorAll('.shot').forEach(function (shot) {
     <p class="mjw-note">RED is an AI and can make mistakes. <a href="https://wa.me/919843176704" target="_blank" rel="noopener noreferrer">Talk to a person</a></p>
   </section>
 </div>
+
+<script id="mj-preview-swipe-script">
+(function(){
+  var trigger=document.getElementById('mj-preview-swipe');
+  var overlay=document.getElementById('mj-preview-overlay');
+  var closeButton=document.getElementById('mj-preview-close');
+  var topbar=document.getElementById('mj-preview-topbar');
+  if(!trigger||!overlay||!closeButton||!topbar)return;
+  var startY=0,startX=0,tracking=false,closing=false;
+  function openPreview(){
+    if(!overlay.hidden)return;
+    overlay.hidden=false;
+    document.body.classList.add('mj-preview-open');
+    requestAnimationFrame(function(){closeButton.focus();});
+  }
+  function closePreview(){
+    if(overlay.hidden||closing)return;
+    closing=true;
+    overlay.classList.add('is-closing');
+    window.setTimeout(function(){
+      overlay.hidden=true;
+      overlay.classList.remove('is-closing');
+      document.body.classList.remove('mj-preview-open');
+      trigger.focus();
+      closing=false;
+    },360);
+  }
+  trigger.addEventListener('click',openPreview);
+  trigger.addEventListener('pointerdown',function(e){
+    tracking=true;startY=e.clientY;startX=e.clientX;
+    try{trigger.setPointerCapture(e.pointerId);}catch(_){}
+  });
+  trigger.addEventListener('pointerup',function(e){
+    if(!tracking)return;tracking=false;
+    if(startY-e.clientY>45&&Math.abs(e.clientX-startX)<100)openPreview();
+  });
+  trigger.addEventListener('pointercancel',function(){tracking=false;});
+  closeButton.addEventListener('click',closePreview);
+  topbar.addEventListener('pointerdown',function(e){
+    if(e.target.closest('button'))return;
+    tracking=true;startY=e.clientY;startX=e.clientX;
+    try{topbar.setPointerCapture(e.pointerId);}catch(_){}
+  });
+  topbar.addEventListener('pointerup',function(e){
+    if(!tracking)return;tracking=false;
+    if(e.clientY-startY>65&&Math.abs(e.clientX-startX)<110)closePreview();
+  });
+  topbar.addEventListener('pointercancel',function(){tracking=false;});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&!overlay.hidden)closePreview();
+  });
+})();
+</script>
 </body>
 </html>
