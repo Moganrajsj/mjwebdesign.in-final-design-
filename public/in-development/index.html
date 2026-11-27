@@ -77,6 +77,7 @@ main{padding:76px 0 88px}
 .live-label{display:flex;align-items:center;gap:7px;font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
 .live-label:before{content:"";width:8px;height:8px;border-radius:50%;background:#1F3BFF;box-shadow:0 0 0 3px rgba(31,59,255,.14)}
 .preview-frame{position:relative;width:100%;height:min(76vh,840px);min-height:600px;background:#0b0f0d;overflow:hidden}
+[hidden]{display:none!important}
 .preview-frame iframe{display:block;width:100%;height:100%;border:0;background:#fff}
 .preview-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:12px;background:#f7f7fa;color:#44445a;font-size:.85rem;font-weight:800;pointer-events:none;opacity:1;transition:opacity .35s}
 .preview-loading.hidden{opacity:0}
@@ -143,17 +144,16 @@ footer{padding:24px 0;background:var(--yellow);border-top:3px solid var(--ink)}
         <strong style="font:800 .82rem var(--display);letter-spacing:-.02em">SAI SARAVANA TURF</strong>
         <span class="preview-hint">Interactive website preview</span>
       </div>
-      <div class="browserbar" aria-hidden="true">
+      <div class="browserbar" id="preview-browserbar" aria-hidden="true" hidden>
         <span class="browser-dots"><i></i><i></i><i></i></span>
         <span class="browser-address" id="preview-address">Sai Saravana Turf · Live website preview</span>
         <span class="live-label">Website preview</span>
       </div>
-      <div class="preview-frame" id="project-preview">
+      <div class="preview-frame" id="project-preview" hidden>
         <iframe
           id="project-iframe"
-          src="/in-development/previews/sai-saravana-turf/"
           title="Sai Saravana Turf actual website preview"
-          loading="eager"
+          loading="lazy"
           allow="fullscreen; autoplay; clipboard-write; encrypted-media; payment"
           allowfullscreen></iframe>
         <div class="preview-loading" id="preview-loading"><span class="spinner" aria-hidden="true"></span><span>Loading the website preview…</span></div>
@@ -165,12 +165,12 @@ footer{padding:24px 0;background:var(--yellow);border-top:3px solid var(--ink)}
           <p id="project-description">Explore the actual Sai Saravana Turf website, including its grounds, facilities, visual experience and booking information.</p>
         </div>
         <div class="caption-actions">
-          <a class="button" id="open-project" href="/in-development/previews/sai-saravana-turf/" target="_blank" rel="noopener noreferrer">Open full website <span aria-hidden="true">↗</span></a>
+          <button class="button" id="explore-code" type="button" aria-expanded="false" aria-controls="project-preview">Explore Code <span aria-hidden="true">↘</span></button>
         </div>
       </div>
     </section>
     <p class="preview-note"><strong>Sai Saravana Turf preview:</strong> This is the current interactive front-end build. Slot selection and payment confirmation are demo interactions only; they do not create a real booking or process a payment. </p>
-    <p class="preview-note"><strong>About this preview:</strong> Sai Saravana Turf is served from the website files included in this project. This is the current interactive front-end build; booking and payment confirmations are demonstrations only.</p>
+
   </div>
 </main>
 
@@ -190,8 +190,12 @@ footer{padding:24px 0;background:var(--yellow);border-top:3px solid var(--ink)}
 
 <script>
 (function () {
+  var button = document.getElementById("explore-code");
+  var preview = document.getElementById("project-preview");
+  var browserbar = document.getElementById("preview-browserbar");
   var frame = document.getElementById("project-iframe");
   var loading = document.getElementById("preview-loading");
+  var isOpen = false;
   var loadTimer;
 
   function setLoading() {
@@ -199,7 +203,7 @@ footer{padding:24px 0;background:var(--yellow);border-top:3px solid var(--ink)}
     window.clearTimeout(loadTimer);
     loadTimer = window.setTimeout(function () {
       loading.classList.add("hidden");
-    }, 9000);
+    }, 12000);
   }
 
   frame.addEventListener("load", function () {
@@ -207,7 +211,27 @@ footer{padding:24px 0;background:var(--yellow);border-top:3px solid var(--ink)}
     loading.classList.add("hidden");
   });
 
-  setLoading();
+  button.addEventListener("click", function () {
+    isOpen = !isOpen;
+    button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
+    if (isOpen) {
+      browserbar.hidden = false;
+      preview.hidden = false;
+      button.innerHTML = 'Hide website <span aria-hidden="true">↑</span>';
+      if (!frame.getAttribute("src")) {
+        setLoading();
+        frame.src = "/in-development/previews/sai-saravana-turf/";
+      }
+      window.setTimeout(function () {
+        browserbar.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 80);
+    } else {
+      preview.hidden = true;
+      browserbar.hidden = true;
+      button.innerHTML = 'Explore Code <span aria-hidden="true">↘</span>';
+    }
+  });
 })();
 </script>
 
