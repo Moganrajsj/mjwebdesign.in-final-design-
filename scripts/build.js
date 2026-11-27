@@ -74,7 +74,7 @@ for (const file of requiredPreviewFiles) {
 }
 
 const developmentPage = fs.readFileSync(path.join(publicDir, "in-development", "index.html"), "utf8");
-if (/github\\.com/i.test(developmentPage) || /api\\.github\\.com/i.test(developmentPage)) {
+if (/github\.com/i.test(developmentPage) || /api\.github\.com/i.test(developmentPage)) {
   console.error("Build failed: the In Development page must not expose repository links or GitHub API references.");
   process.exit(1);
 }
